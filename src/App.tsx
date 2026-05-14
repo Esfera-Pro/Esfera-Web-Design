@@ -485,7 +485,7 @@ function Navbar() {
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-[#F4F6F5]/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
         <a href="#" className="inline-flex items-center" aria-label="esfera.ai inicio">
-          <img src={esferaLogoWhite} alt="esfera.ai" className="h-5 w-auto sm:h-6" />
+          <img src={esferaLogoWhite} alt="esfera.ai" className="h-[3.3rem] w-auto sm:h-[4.2rem]" />
         </a>
         <div className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => (
@@ -1158,7 +1158,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <a href="#" className="inline-flex items-center" aria-label="esfera.ai inicio">
-            <img src={esferaLogoWhite} alt="esfera.ai" className="h-6 w-auto" />
+            <img src={esferaLogoWhite} alt="esfera.ai" className="h-[4.2rem] w-auto" />
           </a>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">ERP de construcción con IA para controlar presupuesto, compras, almacén y obra.</p>
           <div className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
