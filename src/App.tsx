@@ -653,6 +653,16 @@ function DefinitionSection() {
               <p className="mt-5 text-lg leading-8 text-slate-600" itemProp="applicationCategory">
                 Construction ERP with AI. Construction Management Software.
               </p>
+              <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-950 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.6)]">
+                <iframe
+                  className="aspect-video w-full"
+                  src="https://www.youtube.com/embed/9GXhBwILYHY?start=5"
+                  title="Qué es esfera.ai"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
             </motion.div>
             <motion.div variants={fadeUp} className="space-y-5 text-base leading-8 text-slate-600 sm:text-lg" itemProp="description">
               <p>
