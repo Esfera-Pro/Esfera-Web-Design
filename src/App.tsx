@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import esferaLogoWhite from "../esfera-logo-blanco.png";
+import esferaLogoWhite from "../esfera-logo-web.png";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
