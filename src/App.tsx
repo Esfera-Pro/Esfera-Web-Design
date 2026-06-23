@@ -50,9 +50,13 @@ const navItems = [
   { label: "Módulos", href: "#modulos" },
   { label: "Flujo", href: "#flujo" },
   { label: "IA", href: "#ia" },
-  { label: "Precios", href: "#precios" },
+  { label: "Modelo", href: "#modelo" },
   { label: "Aprende Esfera", href: "https://docs.esfera.ai/", external: true },
 ];
+
+const FREE_SIGNUP_URL = "https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5";
+const LOGIN_URL = "https://sistema.esfera.ai/Usuario/Login";
+const IMPLEMENTATION_URL = "https://wa.me/14845691555?text=Hola%2C%20quiero%20solicitar%20una%20implementaci%C3%B3n%20de%20Esfera%20para%20mi%20empresa.";
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/esfera.ai/", icon: "instagram" },
@@ -288,29 +292,30 @@ const workflowSteps = [
   },
 ];
 
-const aiTools = [
-  ["¿Cuánto nos queda por ejecutar del presupuesto?", "Esfera AI revisa presupuesto, avance y pagos para responder con un resumen claro."],
-  ["¿Qué materiales faltan por llegar al almacén?", "Consulta órdenes de compra, entradas y stock para mostrar saldos pendientes."],
-  ["¿Qué proveedor tiene entregas atrasadas?", "Compara compras aprobadas contra movimientos reales y detecta demoras."],
-  ["¿Cómo va la obra esta semana?", "Resume avance, planillas, consumos y alertas en un lenguaje fácil de compartir con gerencia."],
-];
-
 const faqs = [
   {
-    question: "¿Hay prueba gratuita?",
-    answer: "Sí. Esfera ofrece una prueba gratuita para 1 obra durante 2 meses, sin registrar tarjeta. Incluye 3 usuarios, presupuesto hasta 100.000 USD y todos los módulos.",
+    question: "¿Esfera es gratis para usar?",
+    answer: "Sí. Podés crear una cuenta y usar la plataforma de forma autoasistida, con tutoriales, documentación y recursos para avanzar por tu cuenta.",
+  },
+  {
+    question: "¿Qué no incluye el uso gratuito?",
+    answer: "El acceso gratuito no incluye soporte humano, capacitación personalizada, migración de datos, carga de APUs, configuración guiada, integraciones ni acompañamiento operativo.",
+  },
+  {
+    question: "¿Cuándo conviene contratar implementación?",
+    answer: "Cuando una constructora quiere adoptar Esfera en serio: ordenar procesos, configurar obras, cargar información inicial, capacitar al equipo y dejar el sistema funcionando dentro de la operación real.",
+  },
+  {
+    question: "¿Desde cuánto empieza la implementación?",
+    answer: "La implementación profesional comienza desde USD 2.500 y se cotiza según alcance, cantidad de obras, carga inicial, capacitación, soporte, integraciones y necesidades de la empresa.",
   },
   {
     question: "¿Qué incluye Esfera AI?",
     answer: "Incluye un chat para consultar la información de la obra en lenguaje natural: avance, presupuesto, compras, almacén, APUs, proveedores, contratistas y reportes.",
   },
   {
-    question: "¿Qué controla el módulo de compras?",
-    answer: "Pedidos por etapa, cotizaciones, autorizaciones configurables y órdenes de compra. El sistema cuida que el pedido no exceda lo presupuestado.",
-  },
-  {
-    question: "¿Qué información maneja almacén?",
-    answer: "Entradas, salidas, stock, inventarios cíclicos, trazabilidad de movimientos, auditoría y reportes para detectar errores, retrasos o pérdidas.",
+    question: "¿La implementación reemplaza al software gratuito?",
+    answer: "No. El software gratuito abre la puerta. La implementación es un servicio pago para empresas que necesitan diagnóstico, configuración, capacitación, soporte y adopción operativa.",
   },
 ];
 
@@ -332,28 +337,29 @@ const useCases = [
   },
 ];
 
-const pricing = [
+const usagePaths = [
   {
-    name: "Emprendedor",
-    price: "$30",
-    period: "/mes x obra",
-    description: "Para arquitectos, ingenieros independientes y pequeñas constructoras que quieren ordenar una obra desde el presupuesto.",
-    features: ["1 Proyecto", "8 usuarios", "100MB de almacenamiento", "Presupuesto hasta 500k", "Todos los módulos", "Esfera AI nativa"],
+    name: "Usá Esfera gratis",
+    tag: "AUTOASISTIDO",
+    price: "USD 0",
+    period: "para empezar",
+    description: "Para usuarios, contratistas o empresas que quieren explorar la plataforma, ordenar una obra y avanzar por su cuenta.",
+    includes: ["Acceso gratuito a la plataforma", "Uso autoasistido", "Tutoriales y documentación", "Guías para comenzar", "Ideal para explorar o avanzar solo"],
+    excludes: ["Soporte humano", "Capacitación personalizada", "Migración de datos", "Configuración guiada", "Customizaciones o integraciones"],
+    cta: "Crear cuenta gratis",
+    href: FREE_SIGNUP_URL,
   },
   {
-    name: "Constructor",
-    price: "$120",
-    period: "/mes x obra",
-    description: "Para constructoras y equipos técnicos que necesitan controlar compras, almacén, avances y costos con más usuarios.",
-    features: ["1 Proyecto", "12 usuarios", "1GB de almacenamiento", "Presupuesto hasta 2M", "Todos los módulos", "Esfera AI nativa"],
-    popular: true,
-  },
-  {
-    name: "Empresarial",
-    price: "$300",
-    period: "/mes x obra",
-    description: "Para empresas constructoras y gerencias que manejan obras con mayor volumen de presupuesto, documentación y coordinación.",
-    features: ["1 Proyecto", "16 usuarios", "10GB de almacenamiento", "Presupuesto ilimitado", "Todos los módulos", "Esfera AI nativa"],
+    name: "Implementación completa",
+    tag: "SERVICIO B2B",
+    price: "Desde USD 2.500",
+    period: "según alcance",
+    description: "Para constructoras que necesitan diagnóstico, configuración, carga inicial, capacitación y acompañamiento para adoptar Esfera bien.",
+    includes: ["Diagnóstico operativo", "Setup y configuración inicial", "Carga o migración de datos", "Capacitación al equipo", "Acompañamiento y soporte", "Integraciones bajo cotización"],
+    excludes: [],
+    cta: "Solicitar implementación",
+    href: IMPLEMENTATION_URL,
+    featured: true,
   },
 ];
 
@@ -437,10 +443,10 @@ function SectionHeader({ tag, title, description }: { tag: string; title: string
   );
 }
 
-function Button({ children, variant = "primary", className }: { children: ReactNode; variant?: "primary" | "secondary"; className?: string }) {
+function Button({ children, variant = "primary", className, href = "#modelo" }: { children: ReactNode; variant?: "primary" | "secondary"; className?: string; href?: string }) {
   return (
     <a
-      href="#precios"
+      href={href}
       className={cn(
         "group inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-300 active:scale-[0.98]",
         variant === "primary"
@@ -468,13 +474,13 @@ function TrialCta({ className, compact = false }: { className?: string; compact?
       viewport={{ once: true, amount: 0.4 }}
     >
       <p className="trial-copy text-sm leading-6 [text-wrap:balance]">
-        <span className="trial-copy-strong font-semibold">Prueba Esfera gratis por 2 meses.</span> 1 obra, 3 usuarios y todos los módulos incluidos.
+        <span className="trial-copy-strong font-semibold">Esfera es gratis para usar.</span> Si necesitás implementación, capacitación o soporte personalizado, nuestro equipo lo cotiza según alcance.
       </p>
       <a
-        href="https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5"
+        href={FREE_SIGNUP_URL}
         className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-[#529B8D] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:w-auto"
       >
-        Prueba 2 meses gratis
+        Empezar gratis
       </a>
     </motion.div>
   );
@@ -507,16 +513,16 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-2">
           <a
-            href="https://sistema.esfera.ai/Usuario/Login"
-            className="hidden items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-[#529B8D]/40 hover:text-[#3f8276] active:scale-[0.98] sm:inline-flex"
+            href={LOGIN_URL}
+            className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-[#529B8D]/40 hover:text-[#3f8276] active:scale-[0.98] sm:px-4 sm:text-sm"
           >
             Iniciar sesión
           </a>
           <a
-            href="https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5"
+            href={FREE_SIGNUP_URL}
             className="inline-flex items-center rounded-full bg-[#529B8D] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:px-4 sm:text-sm"
           >
-            Registrarse
+            Empezar gratis
           </a>
         </div>
       </nav>
@@ -596,23 +602,26 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.04fr_0.96fr]">
         <motion.div initial="hidden" animate="visible" variants={stagger}>
           <motion.div variants={fadeUp}>
-            <AgenticTag>ERP para gestión de obras con IA</AgenticTag>
+            <AgenticTag>Gratis para usar. Pago para implementar.</AgenticTag>
           </motion.div>
           <motion.h1 variants={fadeUp} className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.065em] text-slate-950 sm:text-6xl lg:text-7xl">
-            Controla tu obra desde el presupuesto hasta el almacén.
+            Gestioná tu obra con Esfera gratis. Implementala con expertos.
           </motion.h1>
           <motion.p variants={fadeUp} className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-            Esfera es el ERP para arquitectos, constructoras, ingenieros y gerentes de proyecto que necesitan presupuestar, comprar, controlar materiales y medir avances sin perder trazabilidad.
+            Accedé a la plataforma sin costo y empezá de forma autoasistida. Si tu constructora necesita configuración, carga inicial, capacitación y soporte, nuestro equipo implementa Esfera de punta a punta.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Button>Probar 2 meses gratis</Button>
-            <Button variant="secondary">Contactar Ventas</Button>
+            <Button href={FREE_SIGNUP_URL}>Empezar gratis</Button>
+            <Button href={IMPLEMENTATION_URL} variant="secondary">Solicitar implementación</Button>
           </motion.div>
+          <motion.p variants={fadeUp} className="mt-4 max-w-xl text-sm leading-6 text-slate-500">
+            Implementación profesional desde <span className="font-semibold text-slate-800">USD 2.500</span>, según alcance. El acceso gratuito no incluye soporte humano ni configuración guiada.
+          </motion.p>
           <motion.div variants={fadeUp} className="mt-10 grid max-w-xl grid-cols-3 divide-x divide-slate-200 rounded-3xl border border-slate-200 bg-white/70 p-2 backdrop-blur">
             {[
-              ["6", "módulos de obra"],
-              ["IA", "por chat"],
-              ["ERP", "para construcción"],
+              ["Gratis", "uso autoasistido"],
+              ["USD 2.500+", "implementación"],
+              ["ERP", "para constructoras"],
             ].map(([value, label]) => (
               <div key={label} className="px-4 py-3">
                 <p className="text-lg font-semibold tracking-tight text-slate-950">{value}</p>
@@ -666,17 +675,17 @@ function DefinitionSection() {
             </motion.div>
             <motion.div variants={fadeUp} className="space-y-5 text-base leading-8 text-slate-600 sm:text-lg" itemProp="description">
               <p>
-                esfera.ai es un software ERP para construcción con inteligencia artificial nativa. Centraliza presupuesto, análisis de precio unitario, compras, almacén, administración de proyecto, operación de obra, usuarios, proveedores, contratistas y reportes.
+                esfera.ai es una plataforma gratuita para gestión de obra con inteligencia artificial nativa. Centraliza presupuesto, análisis de precio unitario, compras, almacén, administración de proyecto, operación de obra, usuarios, proveedores, contratistas y reportes.
               </p>
               <p>
-                El producto ayuda a arquitectos, constructoras, ingenieros y gerentes de proyecto a controlar costos, materiales, permisos, cronograma, avance físico, planillas y saldos de obra desde una plataforma web.
+                El software abre la puerta: cualquier equipo puede empezar de forma autoasistida. La implementación profesional ayuda a constructoras a configurarlo, cargar información inicial, capacitar al equipo y adoptarlo dentro de su operación real.
               </p>
               <div className="grid gap-3 pt-2 sm:grid-cols-2">
                 {[
-                  "Categoría explícita: Construction ERP with AI",
-                  "Categoría operativa: Construction Management Software",
-                  "Casos de uso: presupuesto, APU, compras, almacén, control de obra",
-                  "IA: chat para consultar avance, compras, inventario, APUs y reportes",
+                  "Software gratuito para empezar sin fricción",
+                  "Uso autoasistido con tutoriales, guías y documentación",
+                  "Implementación paga para constructoras que necesitan adopción operativa",
+                  "Servicio desde USD 2.500 según alcance",
                 ].map((item) => (
                   <div key={item} className="flex gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-medium text-slate-700">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#529B8D]" />
@@ -863,7 +872,7 @@ function WorkflowSection() {
             <p className="mt-5 text-base leading-7 text-slate-600">
               El flujo de Esfera acompaña a tu equipo desde la configuración del proyecto hasta compras, almacén, avances, reportes e IA por chat.
             </p>
-            <a href="https://docs.esfera.ai/flujo-trabajo" className="mt-7 inline-flex items-center text-sm font-semibold text-[#3f8276]">
+            <a href="https://docs.esfera.ai/flujo-trabajo" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center text-sm font-semibold text-[#3f8276]">
               Ver manual de uso
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
@@ -885,44 +894,51 @@ function WorkflowSection() {
 
 function AiSection() {
   return (
-    <section id="ia" className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[#12231f] text-white shadow-[0_28px_80px_-48px_rgba(15,23,42,0.7)]">
-        <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[0.92fr_1.08fr] lg:p-14">
+    <section id="ia" className="px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#12231f] text-white shadow-[0_22px_64px_-46px_rgba(15,23,42,0.7)]">
+        <div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[0.86fr_1.14fr] lg:p-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.35 }} variants={stagger}>
             <motion.div variants={fadeUp}>
               <AgenticTag className="border-white/10 bg-white/10 text-[#9dd5ca]">ESFERA AI CHAT</AgenticTag>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="mt-6 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-5xl">
+            <motion.h2 variants={fadeUp} className="mt-4 text-2xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">
               Pregunta por tu obra y obtén respuestas en segundos.
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
+            <motion.p variants={fadeUp} className="mt-4 max-w-xl text-sm leading-6 text-white/70 sm:text-base">
               Esfera AI es un chat conectado a la información del proyecto. Pregunta por presupuesto, compras, almacén, avance o proveedores y recibe respuestas claras para tomar decisiones en obra.
             </motion.p>
-            <TrialCta className="border-white/10 bg-white/[0.06] [&_.trial-copy]:text-white/70 [&_.trial-copy-strong]:text-white" compact />
+            <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+              <a href={FREE_SIGNUP_URL} className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-[#12231f] transition hover:bg-white/90 active:scale-[0.98]">
+                Empezar gratis
+              </a>
+              <a href={IMPLEMENTATION_URL} className="inline-flex items-center justify-center rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 active:scale-[0.98]">
+                Implementación desde USD 2.500
+              </a>
+            </div>
           </motion.div>
-          <motion.div className="rounded-[1.75rem] border border-white/10 bg-[#081310] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:p-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.6 }}>
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+          <motion.div className="rounded-[1.35rem] border border-white/10 bg-[#081310] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:p-4" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.6 }}>
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-3">
                 <Bot className="h-5 w-5 text-[#9dd5ca]" />
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">chat de obra</span>
               </div>
               <span className="rounded-full bg-[#529B8D]/15 px-3 py-1 font-mono text-xs text-[#9dd5ca]">responde con tus datos</span>
             </div>
-            <div className="mt-6 grid gap-4">
-              <div className="ml-auto max-w-[88%] rounded-3xl rounded-tr-md bg-[#529B8D] p-4 text-sm leading-6 text-white shadow-sm">
+            <div className="mt-4 grid gap-3">
+              <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-[#529B8D] p-3 text-xs leading-5 text-white shadow-sm sm:text-sm">
                 ¿Cuánto cemento falta por llegar para la Torre Norte?
               </div>
-              <div className="max-w-[92%] rounded-3xl rounded-tl-md bg-white/[0.08] p-4 text-sm leading-6 text-white/80">
+              <div className="max-w-[92%] rounded-2xl rounded-tl-md bg-white/[0.08] p-3 text-xs leading-5 text-white/80 sm:text-sm">
                 Faltan 72 bolsas de cemento IP-40 por recibir. La orden OC-2026-1184 pidió 320 bolsas y almacén registró 248 entradas. Te recomiendo revisar con compras si el proveedor confirmó la entrega restante.
               </div>
-              <div className="ml-auto max-w-[88%] rounded-3xl rounded-tr-md bg-[#529B8D] p-4 text-sm leading-6 text-white shadow-sm">
+              <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-[#529B8D] p-3 text-xs leading-5 text-white shadow-sm sm:text-sm">
                 ¿Estamos gastando más de lo presupuestado?
               </div>
-              <div className="max-w-[92%] rounded-3xl rounded-tl-md bg-white p-4 text-sm leading-6 text-slate-800">
+              <div className="max-w-[92%] rounded-2xl rounded-tl-md bg-white p-3 text-xs leading-5 text-slate-800 sm:text-sm">
                 En obra gruesa el consumo está 7.3% por encima del APU aprobado. El mayor desvío está en cemento y mano de obra. Puedo prepararte un resumen por etapa.
               </div>
             </div>
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
               {[
                 [Database, "Consulta datos"],
                 [ShieldCheck, "Resume riesgos"],
@@ -930,20 +946,12 @@ function AiSection() {
               ].map(([Icon, label]) => {
                 const TypedIcon = Icon as typeof Database;
                 return (
-                  <div key={label as string} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                  <div key={label as string} className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
                     <TypedIcon className="h-4 w-4 text-[#9dd5ca]" />
-                    <p className="mt-3 text-sm font-medium text-white/80">{label as string}</p>
+                    <p className="mt-2 text-xs font-medium text-white/80 sm:text-sm">{label as string}</p>
                   </div>
                 );
               })}
-            </div>
-            <div className="mt-6 grid gap-2 border-t border-white/10 pt-5">
-              {aiTools.map(([tool, description]) => (
-                <div key={tool} className="grid gap-2 rounded-2xl bg-white/[0.03] p-3 sm:grid-cols-[0.46fr_1fr]">
-                  <span className="text-xs font-semibold leading-5 text-[#9dd5ca]">{tool}</span>
-                  <span className="text-xs leading-5 text-white/60">{description}</span>
-                </div>
-              ))}
             </div>
           </motion.div>
         </div>
@@ -956,7 +964,7 @@ function UseCasesSection() {
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader tag="PARA EQUIPOS DE CONSTRUCCIÓN" title="Diseñado para quienes presupuestan, ejecutan y dirigen obras." description="Arquitectos, constructoras, ingenieros y gerentes trabajan con la misma información, cada uno desde su responsabilidad." />
+        <SectionHeader tag="PARA EMPRESAS CON OBRA ACTIVA" title="Diseñado para constructoras que necesitan orden operativo real." description="Esfera puede usarse gratis, pero la implementación profesional está pensada para equipos que manejan presupuestos, compras, almacén, APUs, reportes y varias responsabilidades al mismo tiempo." />
         <motion.div className="mt-12 grid gap-4 lg:grid-cols-[1.2fr_0.9fr_0.9fr]" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
@@ -977,44 +985,62 @@ function UseCasesSection() {
   );
 }
 
-function PricingSection() {
+function BusinessModelSection() {
   return (
-    <section id="precios" className="px-4 py-20 sm:px-6 lg:px-8">
+    <section id="modelo" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader tag="PLANES" title="Planes por obra, con todos los módulos incluidos." description="Todos los planes incluyen presupuesto, APU, compras, almacén, control de obra y Esfera AI. Elige según usuarios, almacenamiento y tamaño de presupuesto." />
+        <SectionHeader tag="MODELO COMERCIAL" title="Dos formas de usar Esfera." description="Podés empezar gratis de forma autoasistida. Si tu empresa necesita ayuda humana, configuración y adopción operativa, la implementación profesional se cotiza aparte." />
         <motion.div className="mt-10 rounded-[1.75rem] border border-[#529B8D]/20 bg-[#529B8D]/10 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }}>
           <div>
-            <AgenticTag>FREE TRIAL</AgenticTag>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">Prueba gratuita por 2 meses para 1 obra.</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">Incluye 3 usuarios, presupuesto hasta 100.000 USD, todos los módulos de Esfera y no requiere registrar tarjeta.</p>
+            <AgenticTag>MENSAJE CLAVE</AgenticTag>
+            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">El software abre la puerta. La implementación captura el valor.</h3>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">El acceso a Esfera es gratuito. El servicio de implementación, capacitación y soporte personalizado comienza desde USD 2.500 y se cotiza según el alcance de cada empresa.</p>
           </div>
-          <a href="https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5" className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[#529B8D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:mt-0">
-            Quiero Esfera Gratis
+          <a href={IMPLEMENTATION_URL} className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[#529B8D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:mt-0">
+            Solicitar implementación
           </a>
         </motion.div>
-        <motion.div className="mt-12 grid gap-4 lg:grid-cols-3" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-          {pricing.map((plan) => (
-            <motion.article key={plan.name} variants={fadeUp} className={cn("relative rounded-[1.75rem] border bg-white p-6 shadow-sm", plan.popular ? "border-[#529B8D] ring-4 ring-[#529B8D]/10" : "border-slate-200")}>
-              {plan.popular && <span className="absolute right-5 top-5 rounded-full bg-[#529B8D] px-3 py-1 text-xs font-semibold text-white">Más popular</span>}
-              <h3 className="text-xl font-semibold tracking-tight text-slate-950">{plan.name}</h3>
-              <p className="mt-3 min-h-12 text-sm leading-6 text-slate-600">{plan.description}</p>
-              <div className="mt-8 flex items-end gap-1">
-                <span className="text-5xl font-semibold tracking-[-0.05em] text-slate-950">{plan.price}</span>
-                <span className="pb-2 text-sm font-medium text-slate-500">{plan.period}</span>
+        <motion.div className="mt-12 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+          {usagePaths.map((path) => (
+            <motion.article key={path.name} variants={fadeUp} className={cn("relative rounded-[2rem] border bg-white p-6 shadow-sm sm:p-8", path.featured ? "border-[#529B8D] ring-4 ring-[#529B8D]/10" : "border-slate-200")}>
+              {path.featured && <span className="absolute right-5 top-5 rounded-full bg-[#529B8D] px-3 py-1 text-xs font-semibold text-white">Foco B2B</span>}
+              <AgenticTag>{path.tag}</AgenticTag>
+              <h3 className="mt-5 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">{path.name}</h3>
+              <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">{path.description}</p>
+              <div className="mt-8">
+                <p className="text-4xl font-semibold tracking-[-0.05em] text-slate-950 sm:text-5xl">{path.price}</p>
+                <p className="mt-2 text-sm font-medium text-slate-500">{path.period}</p>
               </div>
-              <a href="https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5" className={cn("mt-7 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition active:scale-[0.98]", plan.popular ? "bg-[#529B8D] text-white hover:bg-[#477f75]" : "border border-slate-200 bg-white text-slate-900 hover:border-[#529B8D]/40 hover:text-[#3f8276]")}>Adquiere tu plan</a>
-              <div className="mt-7 space-y-3 border-t border-slate-100 pt-6">
-                {plan.features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3 text-sm text-slate-700">
-                    <Check className="h-4 w-4 shrink-0 text-[#529B8D]" />
-                    {feature}
+              <a href={path.href} className={cn("mt-7 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition active:scale-[0.98]", path.featured ? "bg-[#529B8D] text-white hover:bg-[#477f75]" : "border border-slate-200 bg-white text-slate-900 hover:border-[#529B8D]/40 hover:text-[#3f8276]")}>{path.cta}</a>
+              <div className="mt-8 grid gap-6 border-t border-slate-100 pt-7 lg:grid-cols-2">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Incluye</p>
+                  <div className="mt-4 space-y-3">
+                    {path.includes.map((feature) => (
+                      <div key={feature} className="flex items-start gap-3 text-sm leading-6 text-slate-700">
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-[#529B8D]" />
+                        {feature}
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                {path.excludes.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">No incluye</p>
+                    <div className="mt-4 space-y-3">
+                      {path.excludes.map((feature) => (
+                        <div key={feature} className="flex items-start gap-3 text-sm leading-6 text-slate-500">
+                          <span className="mt-3 h-px w-4 shrink-0 bg-slate-300" />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}
         </motion.div>
-        <TrialCta />
       </div>
     </section>
   );
@@ -1024,7 +1050,7 @@ function FaqSection() {
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader tag="PREGUNTAS FRECUENTES" title="Lo que necesita saber un equipo antes de empezar." description="Respuestas directas para arquitectos, constructoras, ingenieros y gerentes que evalúan Esfera para controlar una obra." />
+        <SectionHeader tag="PREGUNTAS FRECUENTES" title="Gratis para usar no significa implementación gratuita." description="Respuestas directas para separar el acceso autoasistido del servicio profesional de implementación." />
         <motion.div className="mt-12 grid gap-4 md:grid-cols-2" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
           {faqs.map((faq) => (
             <motion.article key={faq.question} variants={fadeUp} className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm" itemScope itemType="https://schema.org/Question">
@@ -1045,12 +1071,12 @@ function FinalCta() {
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
       <motion.div className="mx-auto max-w-7xl rounded-[2.5rem] border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }}>
-        <AgenticTag>ERP DE CONSTRUCCIÓN CON IA</AgenticTag>
-        <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-semibold tracking-[-0.05em] text-slate-950 sm:text-5xl">Ordena tu obra antes de que el costo, las compras y el almacén se salgan de control.</h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600">Empieza con una obra, incorpora a tu equipo técnico y usa Esfera para controlar presupuesto, compras, materiales, avances y reportes desde un solo lugar.</p>
+        <AgenticTag>ESFERA B2B</AgenticTag>
+        <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-semibold tracking-[-0.05em] text-slate-950 sm:text-5xl">Empezá gratis. Implementá bien cuando tu constructora necesite operar con orden.</h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600">Usá la plataforma por tu cuenta o solicitá una implementación profesional desde USD 2.500 para dejar Esfera configurada, cargada y adoptada por tu equipo.</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <Button>Probar 2 meses gratis</Button>
-          <Button variant="secondary">Solicitar Demo</Button>
+          <Button href={FREE_SIGNUP_URL}>Empezar gratis</Button>
+          <Button href={IMPLEMENTATION_URL} variant="secondary">Implementación desde USD 2.500</Button>
         </div>
       </motion.div>
     </section>
@@ -1170,7 +1196,7 @@ function Footer() {
           <a href="#" className="inline-flex items-center" aria-label="esfera.ai inicio">
             <img src={esferaLogoWhite} alt="esfera.ai" className="h-[4.2rem] w-auto" />
           </a>
-          <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">ERP de construcción con IA para controlar presupuesto, compras, almacén y obra.</p>
+          <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">Plataforma gratuita para gestión de obra, con implementación profesional para constructoras que necesitan adopción operativa.</p>
           <div className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
             <p>ESFERA SOLUTIONS LLC.</p>
             <p>33131, Miami, Florida.</p>
@@ -1186,7 +1212,9 @@ function Footer() {
             <div className="mt-4 grid gap-3 text-sm font-medium text-slate-600">
               <a href="https://docs.esfera.ai" className="hover:text-slate-950">Documentación</a>
               <a href="https://docs.esfera.ai" className="hover:text-slate-950">Integraciones API</a>
-              <a href="https://sistema.esfera.ai/Usuario/Login" className="hover:text-slate-950">Iniciar sesión</a>
+              <a href={FREE_SIGNUP_URL} className="hover:text-slate-950">Empezar gratis</a>
+              <a href={IMPLEMENTATION_URL} className="hover:text-slate-950">Solicitar implementación</a>
+              <a href={LOGIN_URL} className="hover:text-slate-950">Iniciar sesión</a>
               <a href="#/legal" className="hover:text-slate-950">Política de privacidad</a>
               <a href="#/legal#terminos" className="hover:text-slate-950">Términos y condiciones</a>
             </div>
@@ -1205,7 +1233,7 @@ function Footer() {
       </div>
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-slate-200 pt-6 text-xs font-medium text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>© 2025 ESFERA SOLUTIONS LLC.</p>
-        <p>Construction ERP with AI · Construction Management Software</p>
+        <p>Gratis para usar · Implementación desde USD 2.500</p>
       </div>
     </footer>
   );
@@ -1227,7 +1255,7 @@ export default function App() {
   return (
     <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900" itemScope itemType="https://schema.org/SoftwareApplication">
       <meta itemProp="name" content="esfera.ai" />
-      <meta itemProp="applicationCategory" content="Construction ERP with AI; Construction Management Software" />
+      <meta itemProp="applicationCategory" content="Free Construction ERP with AI; Construction Management Software; B2B Implementation Service" />
       <meta itemProp="operatingSystem" content="Web" />
       <Navbar />
       <Hero />
@@ -1238,7 +1266,7 @@ export default function App() {
       <WorkflowSection />
       <AiSection />
       <UseCasesSection />
-      <PricingSection />
+      <BusinessModelSection />
       <FaqSection />
       <FinalCta />
       <Footer />
