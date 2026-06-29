@@ -15,11 +15,9 @@ import {
   LineChart,
   LockKeyhole,
   Mail,
-  PackageCheck,
   ReceiptText,
   Ruler,
   ShieldCheck,
-  Sparkles,
   Users2,
   Warehouse,
 } from "lucide-react";
@@ -339,7 +337,7 @@ const useCases = [
 
 const usagePaths = [
   {
-    name: "Usá Esfera gratis",
+    name: "Uso autoasistido",
     tag: "AUTOASISTIDO",
     price: "USD 0",
     period: "para empezar",
@@ -350,7 +348,7 @@ const usagePaths = [
     href: FREE_SIGNUP_URL,
   },
   {
-    name: "Implementación completa",
+    name: "Implementación profesional",
     tag: "SERVICIO B2B",
     price: "Desde USD 2.500",
     period: "según alcance",
@@ -530,92 +528,28 @@ function Navbar() {
   );
 }
 
-function HeroVisual() {
-  return (
-    <motion.div
-      className="relative mx-auto w-full max-w-xl lg:max-w-none"
-      initial={{ opacity: 0, y: 24, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.15 }}
-      aria-hidden="true"
-    >
-      <div className="absolute -inset-10 rounded-[3rem] bg-[radial-gradient(circle_at_50%_50%,rgba(82,155,141,0.16),rgba(244,246,245,0)_64%)]" />
-      <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_24px_80px_-48px_rgba(15,23,42,0.35)]">
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
-          <div className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#529B8D]" />
-            <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Obra / Costo vivo</span>
-          </div>
-          <span className="rounded-full bg-slate-50 px-3 py-1 font-mono text-xs text-slate-500">Q2-2026</span>
-        </div>
-        <div className="grid gap-4 p-5 sm:p-6">
-          <div className="rounded-3xl border border-slate-100 bg-slate-50/80 p-5">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-slate-900">Torre Norte</p>
-              <p className="font-mono text-xs text-[#3f8276]">+4.7% avance</p>
-            </div>
-            <div className="mt-5 grid grid-cols-4 gap-2">
-              {[72, 44, 61, 86].map((height, index) => (
-                <motion.div key={height} className="flex h-28 items-end rounded-2xl bg-white p-2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 + index * 0.08 }}>
-                  <motion.div
-                    className="w-full rounded-xl bg-[#529B8D]"
-                    style={{ height: `${height}%` }}
-                    animate={{ opacity: [0.82, 1, 0.82] }}
-                    transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.2 }}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-3xl border border-slate-100 bg-white p-5">
-              <PackageCheck className="h-5 w-5 text-[#529B8D]" />
-              <p className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">18.4k</p>
-              <p className="mt-1 text-sm text-slate-500">Ítems de almacén trazados</p>
-            </div>
-            <div className="rounded-3xl border border-slate-100 bg-white p-5">
-              <Bot className="h-5 w-5 text-[#529B8D]" />
-              <p className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">92</p>
-              <p className="mt-1 text-sm text-slate-500">Alertas IA resueltas</p>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-[#529B8D]/20 bg-[#529B8D]/10 p-4">
-            <div className="flex items-start gap-3">
-              <Sparkles className="mt-0.5 h-5 w-5 text-[#3f8276]" />
-              <div>
-                <p className="text-sm font-semibold text-slate-950">Esfera AI detectó un desvío</p>
-                <p className="mt-1 text-sm leading-6 text-slate-600">El consumo de cemento supera el APU en 7.3% para el frente B2.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 function Hero() {
   return (
     <section className="relative overflow-hidden px-4 py-16 sm:px-6 sm:py-24 lg:px-8" itemProp="offers" itemScope itemType="https://schema.org/Offer">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_65%_28%,rgba(82,155,141,0.16),transparent_32%),radial-gradient(circle_at_10%_10%,rgba(15,23,42,0.06),transparent_28%)]" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.04)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(circle_at_center,black,transparent_72%)]" />
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.04fr_0.96fr]">
-        <motion.div initial="hidden" animate="visible" variants={stagger}>
+      <div className="mx-auto max-w-7xl">
+        <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-5xl">
           <motion.div variants={fadeUp}>
             <AgenticTag>Gratis para usar. Pago para implementar.</AgenticTag>
           </motion.div>
-          <motion.h1 variants={fadeUp} className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.065em] text-slate-950 sm:text-6xl lg:text-7xl">
-            Gestioná tu obra con Esfera gratis. Implementala con expertos.
+          <motion.h1 variants={fadeUp} className="mt-6 text-5xl font-semibold leading-[0.95] tracking-[-0.065em] text-slate-950 sm:text-6xl lg:text-7xl">
+            Gestioná tu obra con Esfera. Solicitá tu diagnóstico.
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-            Accedé a la plataforma sin costo y empezá de forma autoasistida. Si tu constructora necesita configuración, carga inicial, capacitación y soporte, nuestro equipo implementa Esfera de punta a punta.
+          <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
+            Accedé a la plataforma sin costo y empezá de forma autoasistida. Si tu constructora necesita configuración, carga inicial, capacitación y soporte, nuestro equipo de expertos implementa Esfera de punta a punta.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button href={FREE_SIGNUP_URL}>Empezar gratis</Button>
             <Button href={IMPLEMENTATION_URL} variant="secondary">Solicitar implementación</Button>
           </motion.div>
           <motion.p variants={fadeUp} className="mt-4 max-w-xl text-sm leading-6 text-slate-500">
-            Implementación profesional desde <span className="font-semibold text-slate-800">USD 2.500</span>, según alcance. El acceso gratuito no incluye soporte humano ni configuración guiada.
+            Implementación profesional desde <span className="font-semibold text-slate-800">USD 2.500</span>, según alcance. <span className="font-semibold text-slate-800">El acceso gratuito no incluye soporte humano ni configuración guiada.</span>
           </motion.p>
           <motion.div variants={fadeUp} className="mt-10 grid max-w-xl grid-cols-3 divide-x divide-slate-200 rounded-3xl border border-slate-200 bg-white/70 p-2 backdrop-blur">
             {[
@@ -630,7 +564,6 @@ function Hero() {
             ))}
           </motion.div>
         </motion.div>
-        <HeroVisual />
       </div>
       <meta itemProp="priceCurrency" content="USD" />
       <meta itemProp="availability" content="https://schema.org/InStock" />
@@ -657,10 +590,11 @@ function DefinitionSection() {
           <div className="mt-7 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <motion.div variants={fadeUp}>
               <h2 className="text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl" itemProp="name">
-                Qué es esfera.ai
+                El mismo software.<br />
+                Dos formas de adoptarlo.
               </h2>
               <p className="mt-5 text-lg leading-8 text-slate-600" itemProp="applicationCategory">
-                Construction ERP with AI. Construction Management Software.
+                ERP de construcción con IA. Software de gestión de obras.
               </p>
               <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-950 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.6)]">
                 <iframe
@@ -673,26 +607,46 @@ function DefinitionSection() {
                 />
               </div>
             </motion.div>
-            <motion.div variants={fadeUp} className="space-y-5 text-base leading-8 text-slate-600 sm:text-lg" itemProp="description">
-              <p>
-                esfera.ai es una plataforma gratuita para gestión de obra con inteligencia artificial nativa. Centraliza presupuesto, análisis de precio unitario, compras, almacén, administración de proyecto, operación de obra, usuarios, proveedores, contratistas y reportes.
-              </p>
-              <p>
-                El software abre la puerta: cualquier equipo puede empezar de forma autoasistida. La implementación profesional ayuda a constructoras a configurarlo, cargar información inicial, capacitar al equipo y adoptarlo dentro de su operación real.
-              </p>
-              <div className="grid gap-3 pt-2 sm:grid-cols-2">
-                {[
-                  "Software gratuito para empezar sin fricción",
-                  "Uso autoasistido con tutoriales, guías y documentación",
-                  "Implementación paga para constructoras que necesitan adopción operativa",
-                  "Servicio desde USD 2.500 según alcance",
-                ].map((item) => (
-                  <div key={item} className="flex gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-medium text-slate-700">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#529B8D]" />
-                    {item}
+            <motion.div variants={fadeUp} className="grid gap-4 md:grid-cols-2" itemProp="description">
+              {[
+                {
+                  title: "Empezar gratis",
+                  description: "Para conocer Esfera, crear proyectos y avanzar de forma autoasistida.",
+                  features: [
+                    "Crear proyectos",
+                    "Aprender con tutoriales",
+                    "Explorar todas las funciones",
+                    "Sin tarjeta",
+                    "Ideal para profesionales independientes y equipos pequeños",
+                  ],
+                },
+                {
+                  title: "Implementación profesional",
+                  description: "Para constructoras que necesitan dejar Esfera configurada y adoptada por su equipo.",
+                  features: [
+                    "Diagnóstico de procesos",
+                    "Configuración personalizada",
+                    "Migración de información",
+                    "Capacitación por áreas",
+                    "Acompañamiento hasta la adopción",
+                    "Desde USD 2.500",
+                  ],
+                  featured: true,
+                },
+              ].map((path) => (
+                <article key={path.title} className={cn("rounded-[1.75rem] border p-6 shadow-sm", path.featured ? "border-[#529B8D]/35 bg-[#529B8D]/10" : "border-slate-200 bg-slate-50")}> 
+                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{path.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{path.description}</p>
+                  <div className="mt-6 space-y-3">
+                    {path.features.map((feature) => (
+                      <div key={feature} className="flex gap-3 text-sm font-medium leading-6 text-slate-700">
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-[#529B8D]" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </article>
+              ))}
             </motion.div>
           </div>
           <meta itemProp="operatingSystem" content="Web" />
@@ -989,12 +943,12 @@ function BusinessModelSection() {
   return (
     <section id="modelo" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader tag="MODELO COMERCIAL" title="Dos formas de usar Esfera." description="Podés empezar gratis de forma autoasistida. Si tu empresa necesita ayuda humana, configuración y adopción operativa, la implementación profesional se cotiza aparte." />
+        <SectionHeader tag="MODELO COMERCIAL" title="Dos formas de usar Esfera." description="Puedes empezar gratis desde hoy. Si tu empresa necesita adoptar Esfera como parte de su forma de trabajar, ofrecemos un servicio de implementación que configura la plataforma, acompaña al equipo y asegura una puesta en marcha exitosa." />
         <motion.div className="mt-10 rounded-[1.75rem] border border-[#529B8D]/20 bg-[#529B8D]/10 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }}>
           <div>
             <AgenticTag>MENSAJE CLAVE</AgenticTag>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">El software abre la puerta. La implementación captura el valor.</h3>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">El acceso a Esfera es gratuito. El servicio de implementación, capacitación y soporte personalizado comienza desde USD 2.500 y se cotiza según el alcance de cada empresa.</p>
+            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">El software es la herramienta. La implementación asegura que funcione en tu operación.</h3>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Usar Esfera es fácil. Integrarlo a la forma de trabajar de tu empresa requiere un proceso. Para eso existe la implementación.</p>
           </div>
           <a href={IMPLEMENTATION_URL} className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[#529B8D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:mt-0">
             Solicitar implementación
