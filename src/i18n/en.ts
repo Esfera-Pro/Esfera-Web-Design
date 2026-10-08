@@ -23,9 +23,9 @@ export const enContent: SiteContent = {
 
   nav: {
     items: [
-      { label: "Features", to: "/en/features" },
-      { label: "Pricing", to: "/en/pricing" },
-      { label: "Implementation", to: "/en/implementation" },
+      { label: "Features", to: "/en/features/" },
+      { label: "Pricing", to: "/en/pricing/" },
+      { label: "Implementation", to: "/en/implementation/" },
       { label: "Learn Esfera AI", href: DOCS_URL, external: true },
     ],
     login: "Log in",
@@ -56,7 +56,7 @@ export const enContent: SiteContent = {
   definition: {
     tag: "WHAT IS ESFERA AI",
     title: "The same software. You choose how to adopt it.",
-    subtitle: "AI-powered construction ERP. Construction management software.",
+    subtitle: "AI-powered construction ERP.",
     videoTitle: "Explainer video: what is Esfera AI",
     videoSummary:
       "Video summary: an introduction to Esfera AI, the platform that connects takeoffs, budgets, unit price analysis, purchasing, warehouse, site progress and reports in one system, with an AI chat that answers using your project data. It also covers the usage model: free self-serve, the Esfera Plus add-on and professional implementation for construction companies.",
@@ -598,14 +598,14 @@ export const enContent: SiteContent = {
     linksTitle: "Links",
     links: [
       { label: "Documentation", href: DOCS_URL, external: true },
-      { label: "Features", to: "/en/features" },
-      { label: "Pricing", to: "/en/pricing" },
-      { label: "Implementation", to: "/en/implementation" },
+      { label: "Features", to: "/en/features/" },
+      { label: "Pricing", to: "/en/pricing/" },
+      { label: "Implementation", to: "/en/implementation/" },
       { label: "Start for free", href: FREE_SIGNUP_URL, external: true },
       { label: "Request implementation", href: IMPLEMENTATION_URL, external: true },
       { label: "Log in", href: LOGIN_URL, external: true },
-      { label: "Privacy policy", to: "/privacidad" },
-      { label: "Terms and conditions", to: "/terminos#terminos" },
+      { label: "Privacy policy", to: "/privacidad/" },
+      { label: "Terms and conditions", to: "/terminos/#terminos" },
     ],
     socialTitle: "Social media",
     copyright: "ESFERA SOLUTIONS LLC.",

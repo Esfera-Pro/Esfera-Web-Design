@@ -17,7 +17,7 @@ function HomePage() {
   const { content } = useI18n();
 
   return (
-    <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
+    <div className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
       <JsonLd
         data={[
           organizationJsonLd(),
@@ -27,15 +27,17 @@ function HomePage() {
         ]}
       />
       <Navbar />
+      <main>
       <Hero />
       <DefinitionSection />
       <UseCasesSection />
       <BusinessModelSection />
       <FaqSection />
       <FinalCta />
+      </main>
       <Footer />
       <WhatsAppBubble />
-    </main>
+    </div>
   );
 }
 

@@ -16,7 +16,7 @@ function ImplementacionPage() {
   const pageUrl = SITE_URL + PAGE_PATHS[lang].implementation!;
 
   return (
-    <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
+    <div className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
       <JsonLd
         data={[
           organizationJsonLd(),
@@ -28,6 +28,7 @@ function ImplementacionPage() {
         ]}
       />
       <Navbar />
+      <main>
       <section className="px-4 pt-16 pb-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <AgenticTag>{p.tag}</AgenticTag>
@@ -112,9 +113,10 @@ function ImplementacionPage() {
           </div>
         </div>
       </section>
+      </main>
       <Footer />
       <WhatsAppBubble />
-    </main>
+    </div>
   );
 }
 

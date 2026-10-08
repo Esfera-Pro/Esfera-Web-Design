@@ -1,5 +1,7 @@
 // Enlaces y constantes compartidas, independientes del idioma.
-import esferaLogoWhite from "../assets/logo.webp";
+// ?url: en Astro el import de una imagen devuelve metadatos (objeto), no una
+// URL; con ?url se obtiene la cadena lista para src.
+import esferaLogoWhite from "../assets/logo.webp?url";
 
 export { esferaLogoWhite };
 

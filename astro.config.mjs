@@ -8,6 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://esfera.ai",
   output: "static",
+  trailingSlash: "always",
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],

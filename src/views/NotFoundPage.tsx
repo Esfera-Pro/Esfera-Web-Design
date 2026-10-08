@@ -9,8 +9,9 @@ function NotFoundPage() {
   const nf = content.notFound;
 
   return (
-    <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
+    <div className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
       <Navbar />
+      <main>
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <AgenticTag>{nf.tag}</AgenticTag>
@@ -27,9 +28,10 @@ function NotFoundPage() {
           </div>
         </div>
       </section>
+      </main>
       <Footer />
       <WhatsAppBubble />
-    </main>
+    </div>
   );
 }
 

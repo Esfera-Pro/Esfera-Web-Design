@@ -48,6 +48,7 @@ export function websiteJsonLd(content: SiteContent) {
 export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
   return {
     "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/#software`,
     name: "Esfera AI",
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Construction Management Software",
@@ -56,6 +57,7 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
     image: `${SITE_URL}/og-image.png`,
     inLanguage: content.htmlLang,
     description: content.pages.home.description,
+    isAccessibleForFree: true,
     publisher: { "@id": ORGANIZATION_ID },
     featureList: content.modules.map((m) => m.title),
     offers: [
@@ -83,6 +85,18 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
         priceCurrency: "USD",
         url: `${SITE_URL}${content.lang === "en" ? "/en/pricing/" : "/precios/"}`,
       },
+      {
+        "@type": "Offer",
+        name: content.plans.find((plan) => plan.kind === "implementation")!.name,
+        description: content.implementationPage.pricingText,
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: 2500,
+          priceCurrency: "USD",
+        },
+        url: `${SITE_URL}${content.lang === "en" ? "/en/implementation/" : "/implementacion/"}`,
+      },
     ],
   };
 }
@@ -90,6 +104,7 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
 export function serviceJsonLd(content: SiteContent, pageUrl: string) {
   return {
     "@type": "Service",
+    "@id": `${SITE_URL}/#implementation`,
     name: content.implementationPage.tag === "IMPLEMENTACIÓN PROFESIONAL"
       ? "Implementación profesional de Esfera AI"
       : "Esfera AI professional implementation",
@@ -104,7 +119,7 @@ export function serviceJsonLd(content: SiteContent, pageUrl: string) {
       priceCurrency: "USD",
       priceSpecification: {
         "@type": "PriceSpecification",
-        minPrice: "2500",
+        minPrice: 2500,
         priceCurrency: "USD",
       },
       description: content.implementationPage.pricingText,

@@ -25,9 +25,9 @@ export const esContent = {
 
   nav: {
     items: [
-      { label: "Funcionalidades", to: "/funcionalidades" },
-      { label: "Precios", to: "/precios" },
-      { label: "Implementación", to: "/implementacion" },
+      { label: "Funcionalidades", to: "/funcionalidades/" },
+      { label: "Precios", to: "/precios/" },
+      { label: "Implementación", to: "/implementacion/" },
       { label: "Aprende Esfera AI", href: DOCS_URL, external: true },
     ],
     login: "Iniciar sesión",
@@ -39,7 +39,7 @@ export const esContent = {
 
   hero: {
     tag: "Software gratuito para construcción",
-    title: "Gestiona tu obra con Esfera AI. Software de gestión de obras.",
+    title: "Software de gestión de obras con IA, gratis para empezar",
     subtitle:
       "Esfera AI reúne cómputo, presupuesto, análisis de precio unitario, compras, almacén, cronograma, obra y reportes en una sola plataforma. Empieza gratis de forma autoasistida o solicita implementación profesional para tu empresa.",
     modules: ["Cómputo", "Presupuesto", "APU", "Compras", "Almacén", "Cronograma", "Obra", "Reportes"],
@@ -58,7 +58,7 @@ export const esContent = {
   definition: {
     tag: "QUÉ ES ESFERA AI",
     title: "El mismo software. Tú eliges cómo adoptarlo.",
-    subtitle: "ERP de construcción con IA. Software de gestión de obras.",
+    subtitle: "ERP de construcción con inteligencia artificial.",
     videoTitle: "Video explicativo: qué es Esfera AI",
     videoSummary:
       "Resumen del video: presentación de Esfera AI, la plataforma que conecta cómputo, presupuesto, APUs, compras, almacén, avance de obra y reportes en un solo sistema, con un chat de IA que responde con los datos de tu proyecto. Cubre también el modelo de uso: gratis de forma autoasistida, addon Esfera Plus e implementación profesional para constructoras.",
@@ -602,14 +602,14 @@ export const esContent = {
     linksTitle: "Enlaces",
     links: [
       { label: "Documentación", href: DOCS_URL, external: true },
-      { label: "Funcionalidades", to: "/funcionalidades" },
-      { label: "Precios", to: "/precios" },
-      { label: "Implementación", to: "/implementacion" },
+      { label: "Funcionalidades", to: "/funcionalidades/" },
+      { label: "Precios", to: "/precios/" },
+      { label: "Implementación", to: "/implementacion/" },
       { label: "Empezar gratis", href: FREE_SIGNUP_URL, external: true },
       { label: "Solicitar implementación", href: IMPLEMENTATION_URL, external: true },
       { label: "Iniciar sesión", href: LOGIN_URL, external: true },
-      { label: "Política de privacidad", to: "/privacidad" },
-      { label: "Términos y condiciones", to: "/terminos#terminos" },
+      { label: "Política de privacidad", to: "/privacidad/" },
+      { label: "Términos y condiciones", to: "/terminos/#terminos" },
     ],
     socialTitle: "Redes sociales",
     copyright: "ESFERA SOLUTIONS LLC.",

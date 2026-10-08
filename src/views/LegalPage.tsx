@@ -12,9 +12,10 @@ function LegalPage() {
   const legal = content.legalPage;
 
   return (
-    <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
+    <div className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
       <JsonLd data={[organizationJsonLd()]} />
       <Navbar />
+      <main>
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <a href={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]">
@@ -59,9 +60,10 @@ function LegalPage() {
           </div>
         </div>
       </section>
+      </main>
       <Footer />
       <WhatsAppBubble />
-    </main>
+    </div>
   );
 }
 
