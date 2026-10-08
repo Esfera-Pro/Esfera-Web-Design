@@ -39,7 +39,7 @@ export function Seo({ page, canonicalPath, noindex = false }: { page: PageKey; c
       ))}
       <meta property="og:site_name" content="Esfera AI" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={meta.ogTitle} />
+      <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:url" content={absolute(canonical)} />
       <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
@@ -47,7 +47,7 @@ export function Seo({ page, canonicalPath, noindex = false }: { page: PageKey; c
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={content.ogLocale} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={meta.ogTitle} />
+      <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
       <meta name="twitter:image" content={`${SITE_URL}/og-image.png`} />
     </>

@@ -34,6 +34,7 @@ export const esContent = {
     signup: "Empezar gratis",
     homeLabel: "esfera.ai inicio",
     mainNavLabel: "Navegación principal",
+    logoAlt: "Logo de Esfera AI",
   },
 
   hero: {
@@ -52,14 +53,15 @@ export const esContent = {
       ["8 módulos", "de obra"],
       ["IA", "con tus datos"],
     ],
-    logoAlt: "Esfera AI",
   },
 
   definition: {
     tag: "QUÉ ES ESFERA AI",
     title: "El mismo software. Tú eliges cómo adoptarlo.",
     subtitle: "ERP de construcción con IA. Software de gestión de obras.",
-    videoTitle: "Qué es esfera.ai",
+    videoTitle: "Video explicativo: qué es Esfera AI",
+    videoSummary:
+      "Resumen del video: presentación de Esfera AI, la plataforma que conecta cómputo, presupuesto, APUs, compras, almacén, avance de obra y reportes en un solo sistema, con un chat de IA que responde con los datos de tu proyecto. Cubre también el modelo de uso: gratis de forma autoasistida, addon Esfera Plus e implementación profesional para constructoras.",
     exploreLabel: "Explorar funcionalidades",
     paths: [
       {
@@ -627,36 +629,30 @@ export const esContent = {
       title: "Gestión de obras y presupuestos con IA | Gratis | Esfera AI",
       description:
         "Software de gestión de obras y presupuestos con IA. Úsalo gratis o contrata implementación profesional desde USD 2.500.",
-      ogTitle: "Esfera AI | Gratis para usar, implementación opcional desde USD 2.500",
     },
     features: {
       title: "Funcionalidades: módulos de obra, compras e IA | Esfera AI",
       description:
         "Cómputo, presupuesto, APU, compras, almacén, cronograma, avance de obra y reportes gerenciales, con chat de IA conectado a tus datos.",
-      ogTitle: "Funcionalidades de Esfera AI | Gestión de obra de principio a fin",
     },
     pricing: {
       title: "Precios de Esfera AI: plan gratis, Plus e implementación",
       description:
         "Usa Esfera AI gratis, amplía capacidad con el addon Esfera Plus por USD 30/mes o contrata implementación profesional desde USD 2.500.",
-      ogTitle: "Precios de Esfera AI | Gratis, Plus USD 30/mes e implementación desde USD 2.500",
     },
     implementation: {
       title: "Implementación profesional para constructoras | Esfera AI",
       description:
         "Servicio B2B de implementación de Esfera AI: diagnóstico, configuración, migración de datos, capacitación y acompañamiento. Desde USD 2.500.",
-      ogTitle: "Implementación profesional de Esfera AI | Desde USD 2.500",
     },
     legal: {
       title: "Información legal: privacidad y términos | Esfera AI",
       description:
         "Política de privacidad y términos y condiciones de Esfera Solutions LLC para los servicios de www.esfera.ai.",
-      ogTitle: "Información legal | Esfera AI",
     },
     notFound: {
       title: "Página no encontrada | Esfera AI",
       description: "El enlace puede estar desactualizado. Vuelve al inicio de esfera.ai.",
-      ogTitle: "Página no encontrada | Esfera AI",
     },
   },
 };

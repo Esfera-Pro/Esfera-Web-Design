@@ -39,7 +39,7 @@ function Navbar() {
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-[#F4F6F5]/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8" aria-label={nav.mainNavLabel}>
         <Link to={content.lang === "en" ? "/en/" : "/"} className="inline-flex shrink-0 items-center" aria-label={nav.homeLabel}>
-          <img src={esferaLogoWhite} alt="esfera.ai" className="h-[3.3rem] w-auto sm:h-[4.2rem]" />
+          <img src={esferaLogoWhite} alt={nav.logoAlt} className="h-[3.3rem] w-auto sm:h-[4.2rem]" />
         </Link>
         <div className="hidden items-center gap-7 lg:flex">
           {nav.items.map((item) =>

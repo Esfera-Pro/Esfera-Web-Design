@@ -42,6 +42,7 @@ function DefinitionSection() {
                   allowFullScreen
                 />
               </div>
+              <p className="mt-3 text-sm leading-6 text-slate-500">{def.videoSummary}</p>
               <Link
                 to={PAGE_PATHS[content.lang].features!}
                 className="mt-6 inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"

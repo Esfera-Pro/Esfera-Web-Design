@@ -32,11 +32,12 @@ export const enContent: SiteContent = {
     signup: "Start for free",
     homeLabel: "esfera.ai home",
     mainNavLabel: "Main navigation",
+    logoAlt: "Esfera AI logo",
   },
 
   hero: {
     tag: "Free construction software",
-    title: "Run your construction projects with Esfera AI.",
+    title: "Construction management software with AI, free to start",
     subtitle:
       "Esfera AI brings takeoffs, budgets, unit price analysis, purchasing, warehouse, schedules, site progress and reports into a single platform. Start free on your own or request professional implementation for your company.",
     modules: ["Takeoff", "Budget", "UPA", "Purchasing", "Warehouse", "Schedule", "Site", "Reports"],
@@ -50,14 +51,15 @@ export const enContent: SiteContent = {
       ["8 modules", "for construction"],
       ["AI", "on your data"],
     ],
-    logoAlt: "Esfera AI",
   },
 
   definition: {
     tag: "WHAT IS ESFERA AI",
     title: "The same software. You choose how to adopt it.",
     subtitle: "AI-powered construction ERP. Construction management software.",
-    videoTitle: "What is esfera.ai",
+    videoTitle: "Explainer video: what is Esfera AI",
+    videoSummary:
+      "Video summary: an introduction to Esfera AI, the platform that connects takeoffs, budgets, unit price analysis, purchasing, warehouse, site progress and reports in one system, with an AI chat that answers using your project data. It also covers the usage model: free self-serve, the Esfera Plus add-on and professional implementation for construction companies.",
     exploreLabel: "Explore features",
     paths: [
       {
@@ -620,38 +622,32 @@ export const enContent: SiteContent = {
 
   pages: {
     home: {
-      title: "Construction Project & Budget Management with AI | Free | Esfera AI",
+      title: "Construction Management Software with AI | Esfera AI",
       description:
         "AI-powered construction management software for budgets, purchasing and site control. Use it free or hire professional implementation from USD 2,500.",
-      ogTitle: "Esfera AI | Free to use, optional implementation from USD 2,500",
     },
     features: {
       title: "Features: Construction Modules, Purchasing & AI | Esfera AI",
       description:
         "Takeoff, budget, UPA, purchasing, warehouse, schedule, site progress and management reports, with an AI chat connected to your data.",
-      ogTitle: "Esfera AI Features | Construction management end to end",
     },
     pricing: {
       title: "Esfera AI Pricing: Free Plan, Plus & Implementation",
       description:
         "Use Esfera AI for free, expand capacity with the Esfera Plus add-on at USD 30/month or hire professional implementation from USD 2,500.",
-      ogTitle: "Esfera AI Pricing | Free, Plus USD 30/month, implementation from USD 2,500",
     },
     implementation: {
       title: "Professional Implementation for Construction | Esfera AI",
       description:
         "B2B implementation service for Esfera AI: diagnosis, configuration, data migration, training and support. From USD 2,500.",
-      ogTitle: "Esfera AI Professional Implementation | From USD 2,500",
     },
     legal: {
       title: "Legal information: privacy & terms | Esfera AI",
       description: "Privacy policy and terms and conditions of Esfera Solutions LLC for the services of www.esfera.ai.",
-      ogTitle: "Legal information | Esfera AI",
     },
     notFound: {
       title: "Page not found | Esfera AI",
       description: "The link may be outdated. Go back to the esfera.ai home page.",
-      ogTitle: "Page not found | Esfera AI",
     },
   },
 };

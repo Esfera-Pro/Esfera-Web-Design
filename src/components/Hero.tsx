@@ -55,7 +55,7 @@ function Hero() {
           <div className="absolute -inset-10 rounded-[3rem] bg-transparent" />
           <motion.img
             src={esferaLogoWhite}
-            alt={hero.logoAlt}
+            alt=""
             className="relative h-56 w-auto sm:h-72 lg:h-80"
             initial={{ rotate: 0 }}
             animate={{ rotate: 360 }}

@@ -35,7 +35,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <Link to={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center" aria-label={content.nav.homeLabel}>
-            <img src={esferaLogoWhite} alt="esfera.ai" className="h-[4.2rem] w-auto" />
+            <img src={esferaLogoWhite} alt={content.nav.logoAlt} className="h-[4.2rem] w-auto" />
           </Link>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">{f.description}</p>
           <div className="mt-5 space-y-2 text-sm leading-6 text-slate-600">

@@ -14,6 +14,14 @@ export function organizationJsonLd() {
     logo: `${SITE_URL}/logo.png`,
     email: COMPANY.email,
     foundingDate: COMPANY.foundingDate,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        email: COMPANY.email,
+        contactType: "customer support",
+        availableLanguage: ["es", "en"],
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: COMPANY.streetAddress,

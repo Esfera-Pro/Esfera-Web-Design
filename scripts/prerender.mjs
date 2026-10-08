@@ -69,6 +69,19 @@ async function settlePage(page, route) {
   });
 }
 
+// El <noscript> del shell está en español; en las rutas /en se sustituye por
+// su versión en inglés para no mezclar idiomas en el HTML estático.
+const NOSCRIPT_EN =
+  '<noscript><p>Esfera AI — Construction management software with AI. Free to use on your own; ' +
+  'professional implementation for construction companies from USD 2,500. ' +
+  'Esfera Solutions LLC · 2 S Biscayne Blvd, Ste 3200, Miami, FL 33131, United States · info@esfera.ai · ' +
+  '<a href="https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5">Create free account</a></p></noscript>';
+
+function localizeNoscript(html, route) {
+  if (!route.startsWith("/en")) return html;
+  return html.replace(/<noscript>[\s\S]*?<\/noscript>/, NOSCRIPT_EN);
+}
+
 async function main() {
   const server = startPreviewServer();
   let browser;
@@ -94,7 +107,7 @@ async function main() {
     const captured = [];
     for (const { route, file } of ROUTES) {
       await settlePage(page, route);
-      const html = await page.content();
+      const html = localizeNoscript(await page.content(), route);
       captured.push({ file, html });
       const bytes = (Buffer.byteLength(html) / 1024).toFixed(1);
       console.log(`prerender ✓ ${route.padEnd(22)} (${bytes} KB)`);
