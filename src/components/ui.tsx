@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "../lib/utils";
-import { fadeUp, stagger, FREE_SIGNUP_URL } from "../data/content";
+import { fadeUp, stagger, FREE_SIGNUP_URL } from "../data/links";
+import { useI18n } from "../i18n";
 
 function AgenticTag({ children, className }: { children: ReactNode; className?: string }) {
   return (
@@ -58,6 +59,9 @@ function Button({ children, variant = "primary", className, href = "#modelo" }: 
 }
 
 function TrialCta({ className, compact = false }: { className?: string; compact?: boolean }) {
+  const { content } = useI18n();
+  const t = content.trialCta;
+
   return (
     <motion.div
       className={cn(
@@ -70,13 +74,13 @@ function TrialCta({ className, compact = false }: { className?: string; compact?
       viewport={{ once: true, amount: 0.4 }}
     >
       <p className="trial-copy text-sm leading-6 [text-wrap:balance]">
-        <span className="trial-copy-strong font-semibold">Esfera AI es gratis para usar.</span> Si necesitás implementación, capacitación o soporte personalizado, nuestro equipo lo cotiza según alcance.
+        <span className="trial-copy-strong font-semibold">{t.strong}</span> {t.text}
       </p>
       <a
         href={FREE_SIGNUP_URL}
         className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-[#529B8D] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:w-auto"
       >
-        Empezar gratis
+        {t.cta}
       </a>
     </motion.div>
   );

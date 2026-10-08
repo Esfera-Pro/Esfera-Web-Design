@@ -1,4 +1,4 @@
-import { FREE_SIGNUP_URL, IMPLEMENTATION_URL } from "../data/content";
+import { FREE_SIGNUP_URL, IMPLEMENTATION_URL } from "../data/links";
 
 declare global {
   interface Window {

@@ -1,0 +1,56 @@
+# Esfera AI
+
+> Software de gestión de obras y presupuestos para construcción con inteligencia artificial.
+> Gratis para usar de forma autoasistida; implementación profesional opcional para constructoras.
+
+Esfera AI (esfera.ai) es un ERP de construcción en la nube desarrollado por Esfera Solutions LLC.
+Combina presupuesto, cómputo, análisis de precios unitarios (APU), compras, almacén, cronograma,
+control de obra y reportes gerenciales en una sola plataforma web, con un chat de IA conectado a
+los datos del proyecto que responde preguntas en lenguaje natural (avance, presupuesto, compras,
+inventario, proveedores).
+
+## Modelo de negocio
+
+- **Uso autoasistido — USD 0**: cuenta gratuita con 1 empresa, 1 proyecto, presupuestos
+  ilimitados, 100 MB de almacenamiento, usuarios secundarios ilimitados y acceso a empresa/proyecto
+  demo. Sin tarjeta. No incluye soporte humano, capacitación, migración de datos ni integraciones.
+- **Addon Esfera Plus — USD 30/mes o USD 300/año**: múltiples empresas y proyectos, 10 GB de
+  almacenamiento, proyectos activos mientras el addon esté pagado (sin expiración por inactividad).
+- **Implementación profesional — desde USD 2.500** (servicio B2B, cotizado por alcance):
+  diagnóstico operativo, setup y configuración inicial, carga o migración de datos, capacitación
+  al equipo, acompañamiento hasta la adopción e integraciones bajo cotización.
+
+## Módulos principales
+
+- Cómputo y presupuesto por etapas, categorías e ítems
+- Análisis de precio unitario (APU) con 400+ ítems listos y 2.000 materiales editables
+- Compras: pedidos, comparación de cotizaciones, órdenes vinculadas al presupuesto
+- Gestión de almacén: entradas, salidas, stock y movimientos
+- Administración de proyecto: cruce de presupuesto, avance, materiales y mano de obra
+- Módulo de obra: avances, planillas, retenciones y observaciones de campo
+- Usuarios, permisos por rol y proyecto, directorio de proveedores y contratistas
+- Reportes gerenciales y alertas de demora
+- Chat de IA que responde con los datos del proyecto
+
+## Enlaces
+
+- Inicio (español): https://esfera.ai/
+- Funcionalidades: https://esfera.ai/funcionalidades/
+- Precios: https://esfera.ai/precios/
+- Implementación profesional: https://esfera.ai/implementacion/
+- English version: https://esfera.ai/en/
+- Documentación y manuales: https://docs.esfera.ai/
+- Crear cuenta gratis: https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5
+- Iniciar sesión: https://sistema.esfera.ai/Usuario/Login
+
+## Empresa
+
+- Nombre legal: Esfera Solutions LLC
+- Dirección: 2 S Biscayne Blvd, Ste 3200, Miami, FL 33131, United States
+- Email: info@esfera.ai
+- Redes: Instagram, TikTok y X como @esfera.ai · LinkedIn: /company/esferasolutions · YouTube: @esfera-ai
+
+## Aviso
+
+Las páginas legales (privacidad y términos) están disponibles en español y son la versión
+vinculante: https://esfera.ai/privacidad/ · https://esfera.ai/terminos/

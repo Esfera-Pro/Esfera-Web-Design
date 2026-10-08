@@ -1,14 +1,18 @@
 import { Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import { SocialIcon } from "./SocialIcon";
-import { esferaLogoWhite, socialLinks, FREE_SIGNUP_URL, IMPLEMENTATION_URL, LOGIN_URL } from "../data/content";
+import { esferaLogoWhite } from "../data/links";
+import { useI18n } from "../i18n";
 
 function WhatsAppBubble() {
+  const { content } = useI18n();
+
   return (
     <a
       href="https://wa.me/14845691555"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
+      aria-label={content.whatsapp.ariaLabel}
       className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_45px_-18px_rgba(37,211,102,0.75)] transition hover:-translate-y-1 hover:bg-[#20bd5a] focus:outline-none focus:ring-4 focus:ring-[#25D366]/25 sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
     >
       <svg viewBox="0 0 32 32" className="h-7 w-7 sm:h-8 sm:w-8" role="img" aria-hidden="true">
@@ -22,17 +26,22 @@ function WhatsAppBubble() {
 }
 
 function Footer() {
+  const { content } = useI18n();
+  const f = content.footer;
+  const year = new Date().getFullYear();
+
   return (
     <footer className="border-t border-slate-200 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <a href="/" className="inline-flex items-center" aria-label="esfera.ai inicio">
+          <Link to={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center" aria-label={content.nav.homeLabel}>
             <img src={esferaLogoWhite} alt="esfera.ai" className="h-[4.2rem] w-auto" />
-          </a>
-          <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">Plataforma gratuita para gestión de obra, con implementación profesional para constructoras que necesitan adopción operativa.</p>
+          </Link>
+          <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">{f.description}</p>
           <div className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
-            <p>ESFERA SOLUTIONS LLC.</p>
-            <p>33131, Miami, Florida.</p>
+            <p className="font-medium text-slate-700">{f.company}</p>
+            <p>{f.address}</p>
+            <p>{f.cityLine}</p>
             <a href="mailto:info@esfera.ai" className="inline-flex items-center gap-2 font-medium text-[#3f8276] transition hover:text-[#2f6b61]">
               <Mail className="h-4 w-4" />
               info@esfera.ai
@@ -41,21 +50,37 @@ function Footer() {
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:justify-self-end">
           <div>
-            <p className="text-sm font-semibold text-slate-950">Enlaces</p>
+            <p className="text-sm font-semibold text-slate-950">{f.linksTitle}</p>
             <div className="mt-4 grid gap-3 text-sm font-medium text-slate-600">
-              <a href="https://docs.esfera.ai" className="hover:text-slate-950">Documentación</a>
-              <a href="https://docs.esfera.ai" className="hover:text-slate-950">Integraciones API</a>
-              <a href={FREE_SIGNUP_URL} className="hover:text-slate-950">Empezar gratis</a>
-              <a href={IMPLEMENTATION_URL} className="hover:text-slate-950">Solicitar implementación</a>
-              <a href={LOGIN_URL} className="hover:text-slate-950">Iniciar sesión</a>
-              <a href="/privacidad" className="hover:text-slate-950">Política de privacidad</a>
-              <a href="/terminos#terminos" className="hover:text-slate-950">Términos y condiciones</a>
+              {f.links.map((link) =>
+                link.to ? (
+                  <Link key={link.label} to={link.to} className="hover:text-slate-950">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    className="hover:text-slate-950"
+                  >
+                    {link.label}
+                  </a>
+                ),
+              )}
             </div>
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-950">Redes sociales</p>
+            <p className="text-sm font-semibold text-slate-950">{f.socialTitle}</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {socialLinks.map((social) => (
+              {[
+                { label: "Instagram", href: "https://www.instagram.com/esfera.ai/", icon: "instagram" },
+                { label: "TikTok", href: "https://www.tiktok.com/@esfera.ai", icon: "tiktok" },
+                { label: "LinkedIn", href: "https://linkedin.com/company/esferasolutions", icon: "linkedin" },
+                { label: "YouTube", href: "https://www.youtube.com/@esfera-ai", icon: "youtube" },
+                { label: "X", href: "https://x.com/esfera_ai", icon: "x" },
+              ].map((social) => (
                 <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" className="group" aria-label={social.label}>
                   <SocialIcon icon={social.icon} />
                 </a>
@@ -65,8 +90,8 @@ function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-slate-200 pt-6 text-xs font-medium text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-        <p>© 2025 ESFERA SOLUTIONS LLC.</p>
-        <p>Gratis para usar · Implementación desde USD 2.500</p>
+        <p>© {year} {f.copyright}</p>
+        <p>{f.tagline}</p>
       </div>
     </footer>
   );
