@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { AgenticTag, Button } from "./ui";
 import { esferaLogoWhite, FREE_SIGNUP_URL, IMPLEMENTATION_URL, stagger, fadeUp } from "../data/links";
 import { useI18n } from "../i18n";
@@ -56,10 +56,7 @@ function Hero() {
           <motion.img
             src={esferaLogoWhite}
             alt=""
-            className="relative h-56 w-auto sm:h-72 lg:h-80"
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            className="logo-spin relative h-56 w-auto sm:h-72 lg:h-80"
             style={{ filter: "drop-shadow(0 12px 28px rgba(82,155,141,0.35))" }}
           />
         </motion.div>

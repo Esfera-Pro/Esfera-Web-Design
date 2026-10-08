@@ -1,52 +1,46 @@
-import { Link, useLocation } from "react-router-dom";
 import { cn } from "../lib/utils";
 import { esferaLogoWhite, LOGIN_URL, FREE_SIGNUP_URL } from "../data/links";
-import { equivalentPath, useI18n, type Lang } from "../i18n";
+import { pageHref, useI18n, type Lang } from "../i18n";
 
 function LanguageSwitcher() {
-  const { lang, content } = useI18n();
-  const { pathname, hash } = useLocation();
-  const target: Lang = lang === "es" ? "en" : "es";
+  const { lang, page, content } = useI18n();
 
   return (
     <nav
       aria-label={content.languageSwitcher.ariaLabel}
       className="hidden items-center rounded-full border border-slate-200 bg-white p-0.5 text-xs font-semibold sm:flex"
     >
-      {(["es", "en"] as Lang[]).map((code) => {
-        const isActive = code === lang;
-        const href = equivalentPath(pathname, hash, code);
-        return isActive ? (
+      {(["es", "en"] as Lang[]).map((code) =>
+        code === lang ? (
           <span key={code} aria-current="true" className="rounded-full bg-[#529B8D] px-2.5 py-1 text-white">
             {code.toUpperCase()}
           </span>
         ) : (
-          <Link key={code} to={href} className="rounded-full px-2.5 py-1 text-slate-500 transition hover:text-slate-950">
+          <a key={code} href={pageHref(code, page)} className="rounded-full px-2.5 py-1 text-slate-500 transition hover:text-slate-950">
             {code.toUpperCase()}
-          </Link>
-        );
-      })}
-      <span className="sr-only">{target}</span>
+          </a>
+        ),
+      )}
     </nav>
   );
 }
 
 function Navbar() {
-  const { content } = useI18n();
+  const { content, lang } = useI18n();
   const nav = content.nav;
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-[#F4F6F5]/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8" aria-label={nav.mainNavLabel}>
-        <Link to={content.lang === "en" ? "/en/" : "/"} className="inline-flex shrink-0 items-center" aria-label={nav.homeLabel}>
+        <a href={lang === "en" ? "/en/" : "/"} className="inline-flex shrink-0 items-center" aria-label={nav.homeLabel}>
           <img src={esferaLogoWhite} alt={nav.logoAlt} className="h-[3.3rem] w-auto sm:h-[4.2rem]" />
-        </Link>
+        </a>
         <div className="hidden items-center gap-7 lg:flex">
           {nav.items.map((item) =>
             item.to ? (
-              <Link key={item.to} to={item.to} className="text-sm font-medium text-slate-600 transition hover:text-slate-950">
+              <a key={item.to} href={item.to} className="text-sm font-medium text-slate-600 transition hover:text-slate-950">
                 {item.label}
-              </Link>
+              </a>
             ) : (
               <a
                 key={item.href}

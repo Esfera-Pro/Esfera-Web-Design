@@ -1,11 +1,10 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { motion } from "../lib/motion";
 import { ArrowRight, Bot, ClipboardCheck, Database, GraduationCap, LifeBuoy, Settings2 } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer, WhatsAppBubble } from "../components/Footer";
 import { AgenticTag } from "../components/ui";
-import { Seo, JsonLd } from "../components/Seo";
-import { PAGE_PATHS, useI18n } from "../i18n";
+import { JsonLd } from "../components/JsonLd";
+import { I18nProvider, PAGE_PATHS, useI18n, type Lang } from "../i18n";
 import { IMPLEMENTATION_URL, SITE_URL, fadeUp, stagger } from "../data/links";
 import { breadcrumbJsonLd, organizationJsonLd, serviceJsonLd } from "../lib/schema";
 
@@ -18,7 +17,6 @@ function ImplementacionPage() {
 
   return (
     <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
-      <Seo page="implementation" />
       <JsonLd
         data={[
           organizationJsonLd(),
@@ -93,13 +91,13 @@ function ImplementacionPage() {
                   >
                     {p.cta}
                   </a>
-                  <Link
-                    to={PAGE_PATHS[lang].pricing!}
+                  <a
+                    href={PAGE_PATHS[lang].pricing!}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-[#529B8D]/40 hover:text-[#3f8276] active:scale-[0.98]"
                   >
                     {p.viewPricing}
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -121,3 +119,13 @@ function ImplementacionPage() {
 }
 
 export { ImplementacionPage };
+
+// Envoltorio autocontenido: Astro renderiza los children como slots fuera del
+// contexto de React, así que el Provider debe vivir dentro del mismo árbol.
+export function ImplementacionPageEntry({ lang }: { lang: Lang }) {
+  return (
+    <I18nProvider lang={lang} page="implementation">
+      <ImplementacionPage />
+    </I18nProvider>
+  );
+}

@@ -1,30 +1,26 @@
 import { ArrowRight } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
 import { AgenticTag } from "../components/ui";
-import { Seo, JsonLd } from "../components/Seo";
+import { JsonLd } from "../components/JsonLd";
 import { Navbar } from "../components/Navbar";
 import { Footer, WhatsAppBubble } from "../components/Footer";
 import { legalSections } from "../i18n/es";
-import { useI18n } from "../i18n";
+import { I18nProvider, useI18n, type Lang } from "../i18n";
 import { organizationJsonLd } from "../lib/schema";
 
 function LegalPage() {
   const { content } = useI18n();
-  const { pathname } = useLocation();
-  const canonicalPath = (pathname.replace(/\/+$/, "") || "/legal") + "/";
   const legal = content.legalPage;
 
   return (
     <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
-      <Seo page="legal" canonicalPath={canonicalPath} />
       <JsonLd data={[organizationJsonLd()]} />
       <Navbar />
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <Link to={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]">
+          <a href={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]">
             <ArrowRight className="mr-2 h-4 w-4 rotate-180" />
             {legal.backLink}
-          </Link>
+          </a>
           <div className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
             <AgenticTag>{legal.tag}</AgenticTag>
             <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-slate-950 sm:text-6xl">
@@ -70,3 +66,13 @@ function LegalPage() {
 }
 
 export { LegalPage };
+
+// Envoltorio autocontenido: Astro renderiza los children como slots fuera del
+// contexto de React, así que el Provider debe vivir dentro del mismo árbol.
+export function LegalPageEntry({ lang }: { lang: Lang }) {
+  return (
+    <I18nProvider lang={lang} page="legal">
+      <LegalPage />
+    </I18nProvider>
+  );
+}

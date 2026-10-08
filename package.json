@@ -1,30 +1,25 @@
 {
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs",
-    "preview": "vite preview",
-    "prerender": "node scripts/prerender.mjs"
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview",
+    "prerender": "node scripts/prerender.mjs",
+    "check": "astro check"
   },
   "dependencies": {
+    "@astrojs/react": "^7.0.1",
     "@tailwindcss/vite": "latest",
-    "@vitejs/plugin-react": "latest",
+    "astro": "^7.3.8",
     "clsx": "latest",
-    "framer-motion": "latest",
     "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "^7.18.3",
     "tailwind-merge": "latest",
     "tailwindcss": "latest",
-    "typescript": "latest",
-    "vite": "latest"
+    "typescript": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "puppeteer": "^25.13.0"
-  },
-  "allowScripts": {
-    "puppeteer@25.13.0": true
+    "@types/react-dom": "latest"
   }
 }

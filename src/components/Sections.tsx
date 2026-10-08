@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { ArrowRight, Bot, Check, Database, Layers3, ShieldCheck } from "lucide-react";
 import { cn } from "../lib/utils";
 import { AgenticTag, SectionHeader, Button, TrialCta } from "./ui";
 import { FREE_SIGNUP_URL, IMPLEMENTATION_URL, PLUS_URL, fadeUp, stagger } from "../data/links";
 import { PAGE_PATHS, useI18n } from "../i18n";
-import type { SiteContent } from "../i18n/es";
 
 function DefinitionSection() {
   const { content } = useI18n();
@@ -43,13 +40,13 @@ function DefinitionSection() {
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-500">{def.videoSummary}</p>
-              <Link
-                to={PAGE_PATHS[content.lang].features!}
+              <a
+                href={PAGE_PATHS[content.lang].features!}
                 className="mt-6 inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"
               >
                 {def.exploreLabel}
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </motion.div>
             <motion.div variants={fadeUp} className="grid gap-4 md:grid-cols-2">
               {def.paths.map((path) => (
@@ -109,7 +106,6 @@ function ModulesSection() {
 function ProductScreenshotsSection() {
   const { content } = useI18n();
   const s = content.screenshotsSection;
-  const [activeScreenshot, setActiveScreenshot] = useState<SiteContent["screenshots"][number] | null>(null);
 
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
@@ -135,7 +131,10 @@ function ProductScreenshotsSection() {
             >
               <button
                 type="button"
-                onClick={() => setActiveScreenshot(screenshot)}
+                data-lightbox-src={screenshot.src}
+                data-lightbox-alt={screenshot.alt}
+                data-lightbox-tag={screenshot.tag}
+                data-lightbox-title={screenshot.title}
                 className="relative overflow-hidden rounded-[1.35rem] border border-slate-200 bg-slate-100 text-left transition focus:outline-none focus:ring-4 focus:ring-[#529B8D]/20"
                 aria-label={`${s.zoomAriaPrefix} ${screenshot.title}`}
               >
@@ -160,43 +159,28 @@ function ProductScreenshotsSection() {
         </motion.div>
         <TrialCta />
       </div>
-      <AnimatePresence>
-        {activeScreenshot && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveScreenshot(null)}
+      <dialog
+        data-screenshots-dialog
+        aria-label={s.zoom}
+        className="w-full max-w-6xl overflow-visible rounded-[1.5rem] border border-slate-200 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-950/80 backdrop:backdrop-blur-sm"
+      >
+        <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3 sm:px-5">
+          <div>
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3f8276]" data-dialog-tag />
+            <h3 className="mt-1 text-base font-semibold tracking-tight text-slate-950 sm:text-lg" data-dialog-title />
+          </div>
+          <button
+            type="button"
+            data-dialog-close
+            className="rounded-full border border-slate-200 px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
           >
-            <motion.div
-              className="w-full max-w-6xl overflow-hidden rounded-[1.5rem] border border-white/10 bg-white shadow-2xl"
-              initial={{ opacity: 0, y: 18, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 18, scale: 0.96 }}
-              transition={{ type: "spring", stiffness: 180, damping: 24 }}
-              onClick={(event) => event.stopPropagation()}
-            >
-              <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3 sm:px-5">
-                <div>
-                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3f8276]">{activeScreenshot.tag}</p>
-                  <h3 className="mt-1 text-base font-semibold tracking-tight text-slate-950 sm:text-lg">{activeScreenshot.title}</h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveScreenshot(null)}
-                  className="rounded-full border border-slate-200 px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-                >
-                  {s.close}
-                </button>
-              </div>
-              <div className="max-h-[78dvh] overflow-auto bg-slate-100 p-2 sm:p-4">
-                <img src={activeScreenshot.src} alt={activeScreenshot.alt} className="mx-auto w-full rounded-xl border border-slate-200 bg-white object-contain" />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {s.close}
+          </button>
+        </div>
+        <div className="max-h-[78dvh] overflow-auto bg-slate-100 p-2 sm:p-4">
+          <img data-dialog-img alt="" className="mx-auto w-full rounded-xl border border-slate-200 bg-white object-contain" />
+        </div>
+      </dialog>
     </section>
   );
 }
@@ -436,13 +420,13 @@ function BusinessModelSection() {
           ))}
         </motion.div>
         <div className="mt-10 text-center">
-          <Link
-            to={PAGE_PATHS[content.lang].pricing!}
+          <a
+            href={PAGE_PATHS[content.lang].pricing!}
             className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"
           >
             {s.viewPricingLink}
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

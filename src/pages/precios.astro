@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { esContent } from "../i18n/es";
+import { PreciosPageEntry } from "../views/PreciosPage";
+import { SITE_URL } from "../data/links";
+
+const c = esContent;
+const meta = c.pages.pricing;
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/precios/` },
+  { hreflang: "en", href: `${SITE_URL}/en/pricing/` },
+  { hreflang: "x-default", href: `${SITE_URL}/precios/` },
+];
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/precios/" alternates={alternates}>
+  <PreciosPageEntry lang="es" />
+</Layout>

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "../lib/utils";
 import { fadeUp, stagger, FREE_SIGNUP_URL } from "../data/links";

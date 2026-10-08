@@ -1,7 +1,7 @@
 import { Navbar } from "../components/Navbar";
 import { Footer, WhatsAppBubble } from "../components/Footer";
 import { AgenticTag } from "../components/ui";
-import { Seo, JsonLd } from "../components/Seo";
+import { JsonLd } from "../components/JsonLd";
 import {
   ModulesSection,
   ProductScreenshotsSection,
@@ -10,7 +10,7 @@ import {
   AiSection,
   FinalCta,
 } from "../components/Sections";
-import { PAGE_PATHS, useI18n } from "../i18n";
+import { I18nProvider, PAGE_PATHS, useI18n, type Lang } from "../i18n";
 import { SITE_URL } from "../data/links";
 import { breadcrumbJsonLd, organizationJsonLd, softwareAppJsonLd } from "../lib/schema";
 
@@ -21,7 +21,6 @@ function FuncionalidadesPage() {
 
   return (
     <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
-      <Seo page="features" />
       <JsonLd
         data={[
           organizationJsonLd(),
@@ -55,3 +54,13 @@ function FuncionalidadesPage() {
 }
 
 export { FuncionalidadesPage };
+
+// Envoltorio autocontenido: Astro renderiza los children como slots fuera del
+// contexto de React, así que el Provider debe vivir dentro del mismo árbol.
+export function FuncionalidadesPageEntry({ lang }: { lang: Lang }) {
+  return (
+    <I18nProvider lang={lang} page="features">
+      <FuncionalidadesPage />
+    </I18nProvider>
+  );
+}

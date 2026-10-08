@@ -1,5 +1,4 @@
 import { Mail } from "lucide-react";
-import { Link } from "react-router-dom";
 import { SocialIcon } from "./SocialIcon";
 import { esferaLogoWhite } from "../data/links";
 import { useI18n } from "../i18n";
@@ -34,9 +33,9 @@ function Footer() {
     <footer className="border-t border-slate-200 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <Link to={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center" aria-label={content.nav.homeLabel}>
+          <a href={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center" aria-label={content.nav.homeLabel}>
             <img src={esferaLogoWhite} alt={content.nav.logoAlt} className="h-[4.2rem] w-auto" />
-          </Link>
+          </a>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">{f.description}</p>
           <div className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
             <p className="font-medium text-slate-700">{f.company}</p>
@@ -54,9 +53,9 @@ function Footer() {
             <div className="mt-4 grid gap-3 text-sm font-medium text-slate-600">
               {f.links.map((link) =>
                 link.to ? (
-                  <Link key={link.label} to={link.to} className="hover:text-slate-950">
+                  <a key={link.label} href={link.to} className="hover:text-slate-950">
                     {link.label}
-                  </Link>
+                  </a>
                 ) : (
                   <a
                     key={link.label}

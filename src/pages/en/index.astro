@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { enContent } from "../../i18n/en";
+import { HomePageEntry } from "../../views/HomePage";
+import { SITE_URL } from "../../data/links";
+
+const c = enContent;
+const meta = c.pages.home;
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/` },
+  { hreflang: "en", href: `${SITE_URL}/en/` },
+  { hreflang: "x-default", href: `${SITE_URL}/` },
+];
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/en/" alternates={alternates}>
+  <Fragment slot="head">
+    <script is:inline>
+      var moved = { "#modulos": "/en/features/#modulos", "#flujo": "/en/features/#flujo", "#ia": "/en/features/#ia" };
+      if (moved[location.hash]) location.replace(moved[location.hash]);
+    </script>
+  </Fragment>
+  <HomePageEntry lang="en" />
+</Layout>

@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { esContent } from "../i18n/es";
+import { ImplementacionPageEntry } from "../views/ImplementacionPage";
+import { SITE_URL } from "../data/links";
+
+const c = esContent;
+const meta = c.pages.implementation;
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/implementacion/` },
+  { hreflang: "en", href: `${SITE_URL}/en/implementation/` },
+  { hreflang: "x-default", href: `${SITE_URL}/implementacion/` },
+];
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/implementacion/" alternates={alternates}>
+  <ImplementacionPageEntry lang="es" />
+</Layout>

@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { esContent } from "../i18n/es";
+import { HomePageEntry } from "../views/HomePage";
+import { SITE_URL } from "../data/links";
+
+const c = esContent;
+const meta = c.pages.home;
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/` },
+  { hreflang: "en", href: `${SITE_URL}/en/` },
+  { hreflang: "x-default", href: `${SITE_URL}/` },
+];
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/" alternates={alternates}>
+  <Fragment slot="head">
+    <script is:inline>
+      // Anclas que vivían en la home y ahora viven en /funcionalidades.
+      var moved = { "#modulos": "/funcionalidades/#modulos", "#flujo": "/funcionalidades/#flujo", "#ia": "/funcionalidades/#ia" };
+      if (moved[location.hash]) location.replace(moved[location.hash]);
+    </script>
+  </Fragment>
+  <HomePageEntry lang="es" />
+</Layout>

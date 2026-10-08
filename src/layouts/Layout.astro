@@ -1,0 +1,91 @@
+---
+import "../index.css";
+
+interface Props {
+  htmlLang: string;
+  ogLocale: string;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  alternates?: { hreflang: string; href: string }[];
+  noindex?: boolean;
+}
+
+const { htmlLang, ogLocale, title, description, canonicalPath, alternates = [], noindex = false } = Astro.props;
+const SITE = "https://esfera.ai";
+const canonical = SITE + canonicalPath;
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://docs.esfera.ai" />
+    <link rel="preconnect" href="https://sistema.esfera.ai" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    <meta property="og:site_name" content="Esfera AI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE}/og-image.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE}/og-image.png`} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Tracking de CTAs (dataLayer), igual que en la versión SPA.
+      const CTA_LABELS: Record<string, string> = {
+        "https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5": "empezar_gratis",
+        "https://wa.me/14845691555?text=Hola%2C%20quiero%20solicitar%20una%20implementaci%C3%B3n%20de%20Esfera%20AI%20para%20mi%20empresa.":
+          "solicitar_implementacion",
+      };
+      (window as any).dataLayer = (window as any).dataLayer ?? [];
+      document.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement | null;
+        const anchor = target?.closest?.("a");
+        if (!anchor) return;
+        const label = CTA_LABELS[anchor.getAttribute("href") ?? ""];
+        if (label) {
+          (window as any).dataLayer.push({ event: "cta_click", cta_label: label, cta_url: anchor.getAttribute("href") });
+        }
+      });
+
+      // Lightbox de capturas (dialog nativo).
+      const dialog = document.querySelector("dialog[data-screenshots-dialog]");
+      if (dialog instanceof HTMLDialogElement) {
+        const tag = dialog.querySelector<HTMLElement>("[data-dialog-tag]")!;
+        const dialogTitle = dialog.querySelector<HTMLElement>("[data-dialog-title]")!;
+        const img = dialog.querySelector<HTMLImageElement>("[data-dialog-img]")!;
+        document.addEventListener("click", (event) => {
+          const target = event.target as HTMLElement | null;
+          const trigger = target?.closest?.<HTMLElement>("[data-lightbox-src]");
+          if (trigger) {
+            tag.textContent = trigger.dataset.lightboxTag ?? "";
+            dialogTitle.textContent = trigger.dataset.lightboxTitle ?? "";
+            img.src = trigger.dataset.lightboxSrc ?? "";
+            img.alt = trigger.dataset.lightboxAlt ?? "";
+            dialog.showModal();
+            return;
+          }
+          if (target?.closest?.("[data-dialog-close]") || event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { esContent } from "../i18n/es";
+import { FuncionalidadesPageEntry } from "../views/FuncionalidadesPage";
+import { SITE_URL } from "../data/links";
+
+const c = esContent;
+const meta = c.pages.features;
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/funcionalidades/` },
+  { hreflang: "en", href: `${SITE_URL}/en/features/` },
+  { hreflang: "x-default", href: `${SITE_URL}/funcionalidades/` },
+];
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/funcionalidades/" alternates={alternates}>
+  <FuncionalidadesPageEntry lang="es" />
+</Layout>

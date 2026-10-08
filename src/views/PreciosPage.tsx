@@ -1,11 +1,10 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { motion } from "../lib/motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer, WhatsAppBubble } from "../components/Footer";
 import { AgenticTag } from "../components/ui";
-import { Seo, JsonLd } from "../components/Seo";
-import { PAGE_PATHS, useI18n } from "../i18n";
+import { JsonLd } from "../components/JsonLd";
+import { I18nProvider, PAGE_PATHS, useI18n, type Lang } from "../i18n";
 import { FREE_SIGNUP_URL, IMPLEMENTATION_URL, PLUS_URL, SITE_URL, fadeUp, stagger } from "../data/links";
 import { breadcrumbJsonLd, faqJsonLd, organizationJsonLd, serviceJsonLd, softwareAppJsonLd } from "../lib/schema";
 import { cn } from "../lib/utils";
@@ -77,7 +76,6 @@ function PreciosPage() {
 
   return (
     <main className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
-      <Seo page="pricing" />
       <JsonLd
         data={[
           organizationJsonLd(),
@@ -179,13 +177,13 @@ function PreciosPage() {
             ))}
           </motion.div>
           <div className="mt-10 text-center">
-            <Link
-              to={PAGE_PATHS[lang].implementation!}
+            <a
+              href={PAGE_PATHS[lang].implementation!}
               className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"
             >
               {p.viewImplementation}
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -196,3 +194,13 @@ function PreciosPage() {
 }
 
 export { PreciosPage };
+
+// Envoltorio autocontenido: Astro renderiza los children como slots fuera del
+// contexto de React, así que el Provider debe vivir dentro del mismo árbol.
+export function PreciosPageEntry({ lang }: { lang: Lang }) {
+  return (
+    <I18nProvider lang={lang} page="pricing">
+      <PreciosPage />
+    </I18nProvider>
+  );
+}

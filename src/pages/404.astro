@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { esContent } from "../i18n/es";
+import { NotFoundPageEntry } from "../views/NotFoundPage";
+
+const c = esContent;
+const meta = c.pages.notFound;
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/404/" noindex>
+  <NotFoundPageEntry lang="es" />
+</Layout>

@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { esContent } from "../i18n/es";
+import { LegalPageEntry } from "../views/LegalPage";
+import { SITE_URL } from "../data/links";
+
+const c = esContent;
+const meta = c.pages.legal;
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/privacidad/` },
+  { hreflang: "x-default", href: `${SITE_URL}/privacidad/` },
+];
+---
+
+<Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/privacidad/" alternates={alternates}>
+  <LegalPageEntry lang="es" />
+</Layout>
