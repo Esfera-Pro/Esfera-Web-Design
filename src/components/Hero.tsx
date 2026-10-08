@@ -56,6 +56,8 @@ function Hero() {
           <motion.img
             src={esferaLogoWhite}
             alt=""
+            width={256}
+            height={251}
             className="logo-spin relative h-56 w-auto sm:h-72 lg:h-80"
             style={{ filter: "drop-shadow(0 12px 28px rgba(82,155,141,0.35))" }}
           />

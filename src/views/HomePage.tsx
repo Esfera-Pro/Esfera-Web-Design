@@ -11,10 +11,11 @@ import {
 } from "../components/Sections";
 import { I18nProvider, useI18n, type Lang } from "../i18n";
 import { SITE_URL } from "../data/links";
-import { faqJsonLd, organizationJsonLd, softwareAppJsonLd, websiteJsonLd } from "../lib/schema";
+import { faqJsonLd, organizationJsonLd, softwareAppJsonLd, webpageJsonLd, websiteJsonLd } from "../lib/schema";
 
 function HomePage() {
-  const { content } = useI18n();
+  const { content, lang } = useI18n();
+  const homeUrl = SITE_URL + (lang === "en" ? "/en/" : "/");
 
   return (
     <div className="min-h-[100dvh] bg-[#F4F6F5] text-slate-900">
@@ -22,7 +23,8 @@ function HomePage() {
         data={[
           organizationJsonLd(),
           websiteJsonLd(content),
-          softwareAppJsonLd(content, SITE_URL + (content.lang === "en" ? "/en/" : "/")),
+          webpageJsonLd(content, homeUrl, content.pages.home, `${SITE_URL}/#software`),
+          softwareAppJsonLd(content),
           faqJsonLd(content.faqs),
         ]}
       />

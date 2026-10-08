@@ -20,7 +20,7 @@ function NotFoundPage() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <a
               href={PAGE_PATHS[lang].home!}
-              className="inline-flex items-center justify-center rounded-full bg-[#529B8D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98]"
+              className="inline-flex items-center justify-center rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 active:scale-[0.98]"
             >
               {nf.backHome}
             </a>

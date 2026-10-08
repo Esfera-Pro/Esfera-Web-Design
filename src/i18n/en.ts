@@ -33,6 +33,7 @@ export const enContent: SiteContent = {
     homeLabel: "esfera.ai home",
     mainNavLabel: "Main navigation",
     logoAlt: "Esfera AI logo",
+    menuLabel: "Open navigation menu",
   },
 
   hero: {
@@ -94,6 +95,7 @@ export const enContent: SiteContent = {
     tag: "CONSTRUCTION MODULES",
     title: "All your site control in one system.",
     description: "From budgets and unit price analysis to purchasing, warehouse, physical progress and project management.",
+    moduleLinkLabel: "View module",
   },
 
   screenshotsSection: {
@@ -120,7 +122,6 @@ export const enContent: SiteContent = {
       "The Esfera AI workflow supports your team from project setup through purchasing, warehouse, progress, reports and AI chat.",
     manualLink: "View user manual",
   },
-
   aiSection: {
     tag: "ESFERA AI CHAT",
     title: "Ask about your project and get answers in seconds.",
@@ -141,6 +142,7 @@ export const enContent: SiteContent = {
       },
     ],
     capabilities: ["Query data", "Summarize risks", "Suggest actions"],
+    exampleNote: "Illustrative example with sample data: not a real project.",
   },
 
   useCasesSection: {
@@ -195,6 +197,7 @@ export const enContent: SiteContent = {
         "Build budgets by stage, category and item. Review quantities, materials, labor, progress and warehouse from a single control table.",
       icon: FileSpreadsheet,
       className: "md:col-span-2",
+      to: "/modulos/presupuesto/",
     },
     {
       title: "Unit Price Analysis",
@@ -203,6 +206,7 @@ export const enContent: SiteContent = {
         "Create unit prices with materials, labor, equipment and tools. Use 400+ ready-made items and 2,000 editable base materials.",
       icon: Ruler,
       className: "",
+      to: "/modulos/apu/",
     },
     {
       title: "Purchasing",
@@ -211,6 +215,7 @@ export const enContent: SiteContent = {
         "Turn site needs into orders, compare quotes, approve purchases and issue purchase orders linked to the approved budget.",
       icon: ReceiptText,
       className: "",
+      to: "/modulos/compras/",
     },
     {
       title: "Warehouse Management",
@@ -219,6 +224,7 @@ export const enContent: SiteContent = {
         "Track incoming, outgoing, stock and material movements to reduce losses and know what is available on every site.",
       icon: Warehouse,
       className: "md:col-span-2",
+      to: "/modulos/almacen/",
     },
     {
       title: "Project Management",
@@ -227,6 +233,7 @@ export const enContent: SiteContent = {
         "Cross-reference budget, progress, materials, labor and tools by item and stage so management sees the real status of the project.",
       icon: GitBranch,
       className: "",
+      to: undefined,
     },
     {
       title: "Site Module",
@@ -235,6 +242,7 @@ export const enContent: SiteContent = {
         "Record progress, payrolls, withholdings, consumption and notes to connect the technical office with what happens in the field.",
       icon: HardHat,
       className: "",
+      to: "/modulos/obra/",
     },
   ],
 
@@ -333,6 +341,12 @@ export const enContent: SiteContent = {
       answer:
         "No. The free software opens the door. Implementation is a paid service for companies that need diagnosis, configuration, training, support and operational adoption.",
       topic: "implementacion",
+    },
+    {
+      question: "What happens to my projects if I stop using the free plan?",
+      answer:
+        "Inactivity is measured per project: if no user logs in for 60 days, the project and its data are deleted. You will receive email warnings at 30, 45, 57 and 59 days. With an active Esfera Plus add-on, projects do not expire due to inactivity.",
+      topic: "precios",
     },
   ],
 
@@ -490,6 +504,11 @@ export const enContent: SiteContent = {
       ],
       cta: "Create free account",
     },
+    freeCardNote:
+      "Free plan condition: projects with no activity for 60 days are deleted (with advance email notices). The Esfera Plus add-on keeps projects active.",
+    inactivityLinkLabel: "See section 15 of the Terms",
+    offerPeriodMonth: "(1 month)",
+    offerPeriodYear: "(1 year)",
     plusCard: {
       name: "Esfera Plus add-on",
       tag: "PLUS",
@@ -587,6 +606,23 @@ export const enContent: SiteContent = {
     backLink: "Back to esfera.ai",
     company: "ESFERA SOLUTIONS LLC",
     address: "2 S Biscayne Blvd, Ste 3200, Miami, FL 33131, United States",
+    lastUpdated: "Last updated: October 2026.",
+    indexHeading: "Available documents",
+    cards: [
+      {
+        title: "Privacy Policy",
+        description:
+          "What data we collect, what we use it for, who we share it with, how we protect it and what rights you have over it. (In Spanish.)",
+        to: "/privacidad/",
+      },
+      {
+        title: "Terms and Conditions",
+        description:
+          "Platform usage rules, plans and the Esfera Plus add-on, inactivity and data deletion, liability and applicable jurisdiction. (In Spanish.)",
+        to: "/terminos/",
+      },
+    ],
+    relatedLabel: "See also",
   },
 
   footer: {
@@ -605,7 +641,15 @@ export const enContent: SiteContent = {
       { label: "Request implementation", href: IMPLEMENTATION_URL, external: true },
       { label: "Log in", href: LOGIN_URL, external: true },
       { label: "Privacy policy", to: "/privacidad/" },
-      { label: "Terms and conditions", to: "/terminos/#terminos" },
+      { label: "Terms and conditions", to: "/terminos/" },
+    ],
+    modulesTitle: "Modules",
+    moduleLinks: [
+      { label: "Budgeting", to: "/modulos/presupuesto/" },
+      { label: "Unit price analysis", to: "/modulos/apu/" },
+      { label: "Purchasing", to: "/modulos/compras/" },
+      { label: "Warehouse", to: "/modulos/almacen/" },
+      { label: "Site control", to: "/modulos/obra/" },
     ],
     socialTitle: "Social media",
     copyright: "ESFERA SOLUTIONS LLC.",
@@ -644,6 +688,16 @@ export const enContent: SiteContent = {
     legal: {
       title: "Legal information: privacy & terms | Esfera AI",
       description: "Privacy policy and terms and conditions of Esfera Solutions LLC for the services of www.esfera.ai.",
+    },
+    privacidad: {
+      title: "Privacy Policy | Esfera AI",
+      description:
+        "How Esfera Solutions LLC collects, uses, shares and protects your personal data on www.esfera.ai and its apps. (In Spanish.)",
+    },
+    terminos: {
+      title: "Terms and Conditions | Esfera AI",
+      description:
+        "Terms of use for www.esfera.ai and the Esfera AI platform: accounts, plans, Esfera Plus add-on, inactivity and jurisdiction. (In Spanish.)",
     },
     notFound: {
       title: "Page not found | Esfera AI",

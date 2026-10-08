@@ -22,6 +22,7 @@ const canonical = SITE + canonicalPath;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preconnect" href="https://docs.esfera.ai" />
     <link rel="preconnect" href="https://sistema.esfera.ai" />
     <title>{title}</title>
@@ -86,6 +87,36 @@ const canonical = SITE + canonicalPath;
           }
         });
       }
+
+      // Menú móvil: cerrar con Escape o al hacer clic fuera (details/summary
+      // maneja el resto de forma nativa).
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        document.querySelectorAll("details[data-mobile-menu][open]").forEach((menu) => menu.removeAttribute("open"));
+      });
+      document.addEventListener("click", (event) => {
+        const target = event.target as Node | null;
+        document.querySelectorAll("details[data-mobile-menu][open]").forEach((menu) => {
+          if (target && !menu.contains(target)) menu.removeAttribute("open");
+        });
+      });
+
+      // Video: el reproductor de YouTube solo se carga cuando la persona hace
+      // clic en la miniatura (sin iframe bloqueante en la carga inicial).
+      document.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement | null;
+        const facade = target?.closest?.<HTMLAnchorElement>("a[data-video-facade]");
+        if (!facade) return;
+        event.preventDefault();
+        const iframe = document.createElement("iframe");
+        iframe.className = "aspect-video w-full";
+        iframe.src = `https://www.youtube.com/embed/${facade.dataset.videoFacade}?autoplay=1&start=5`;
+        iframe.title = facade.dataset.videoTitle ?? "";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.allowFullscreen = true;
+        facade.replaceWith(iframe);
+      });
     </script>
   </body>
 </html>

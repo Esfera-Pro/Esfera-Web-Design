@@ -45,7 +45,9 @@ export function websiteJsonLd(content: SiteContent) {
   };
 }
 
-export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
+// La entidad SoftwareApplication tiene una única URL estable (el sitio);
+// cada página se describe aparte como WebPage (ver webpageJsonLd).
+export function softwareAppJsonLd(content: SiteContent) {
   return {
     "@type": "SoftwareApplication",
     "@id": `${SITE_URL}/#software`,
@@ -53,7 +55,7 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Construction Management Software",
     operatingSystem: "Web",
-    url: pageUrl,
+    url: SITE_URL,
     image: `${SITE_URL}/og-image.png`,
     inLanguage: content.htmlLang,
     description: content.pages.home.description,
@@ -71,7 +73,7 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
       },
       {
         "@type": "Offer",
-        name: `${content.pricingPage.plusCard.name} (1 mes)`,
+        name: `${content.pricingPage.plusCard.name} ${content.pricingPage.offerPeriodMonth}`,
         description: content.pricingPage.plusCard.description,
         price: "30",
         priceCurrency: "USD",
@@ -79,7 +81,7 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
       },
       {
         "@type": "Offer",
-        name: `${content.pricingPage.plusCard.name} (1 año)`,
+        name: `${content.pricingPage.plusCard.name} ${content.pricingPage.offerPeriodYear}`,
         description: content.pricingPage.plusCard.description,
         price: "300",
         priceCurrency: "USD",
@@ -101,7 +103,9 @@ export function softwareAppJsonLd(content: SiteContent, pageUrl: string) {
   };
 }
 
-export function serviceJsonLd(content: SiteContent, pageUrl: string) {
+// Igual que SoftwareApplication: URL estable de la entidad (la página
+// canónica del servicio en español), sin importar desde qué página se emita.
+export function serviceJsonLd(content: SiteContent) {
   return {
     "@type": "Service",
     "@id": `${SITE_URL}/#implementation`,
@@ -110,7 +114,7 @@ export function serviceJsonLd(content: SiteContent, pageUrl: string) {
       : "Esfera AI professional implementation",
     serviceType: "Software implementation for construction companies",
     description: content.implementationPage.description,
-    url: pageUrl,
+    url: `${SITE_URL}/implementacion/`,
     inLanguage: content.htmlLang,
     provider: { "@id": ORGANIZATION_ID },
     areaServed: "Worldwide",
@@ -124,6 +128,25 @@ export function serviceJsonLd(content: SiteContent, pageUrl: string) {
       },
       description: content.implementationPage.pricingText,
     },
+  };
+}
+
+// La página misma como entidad, enlazada al software o servicio que describe.
+export function webpageJsonLd(
+  content: SiteContent,
+  pageUrl: string,
+  meta: { title: string; description: string },
+  aboutId?: string,
+) {
+  return {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: meta.title,
+    description: meta.description,
+    inLanguage: content.htmlLang,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    ...(aboutId ? { about: { "@id": aboutId } } : {}),
   };
 }
 

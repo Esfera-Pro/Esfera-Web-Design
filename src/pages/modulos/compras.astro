@@ -1,0 +1,10 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { ModuloPageEntry, getModulo } from "../../views/ModuloPage";
+
+const modulo = getModulo("compras");
+---
+
+<Layout htmlLang="es-419" ogLocale="es_LA" title={modulo.meta.title} description={modulo.meta.description} canonicalPath="/modulos/compras/">
+  <ModuloPageEntry lang="es" slug="compras" />
+</Layout>

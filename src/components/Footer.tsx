@@ -12,7 +12,7 @@ function WhatsAppBubble() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={content.whatsapp.ariaLabel}
-      className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_45px_-18px_rgba(37,211,102,0.75)] transition hover:-translate-y-1 hover:bg-[#20bd5a] focus:outline-none focus:ring-4 focus:ring-[#25D366]/25 sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
+      className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#128C7E] text-white shadow-[0_18px_45px_-18px_rgba(18,140,126,0.75)] transition hover:-translate-y-1 hover:bg-[#0f7566] focus:outline-none focus:ring-4 focus:ring-[#128C7E]/25 sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
     >
       <svg viewBox="0 0 32 32" className="h-7 w-7 sm:h-8 sm:w-8" role="img" aria-hidden="true">
         <path
@@ -34,20 +34,20 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <a href={content.lang === "en" ? "/en/" : "/"} className="inline-flex items-center" aria-label={content.nav.homeLabel}>
-            <img src={esferaLogoWhite} alt={content.nav.logoAlt} className="h-[4.2rem] w-auto" />
+            <img src={esferaLogoWhite} alt={content.nav.logoAlt} width={256} height={251} className="h-[4.2rem] w-auto" />
           </a>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-500">{f.description}</p>
           <div className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
             <p className="font-medium text-slate-700">{f.company}</p>
             <p>{f.address}</p>
             <p>{f.cityLine}</p>
-            <a href="mailto:info@esfera.ai" className="inline-flex items-center gap-2 font-medium text-[#3f8276] transition hover:text-[#2f6b61]">
+            <a href="mailto:info@esfera.ai" className="inline-flex items-center gap-2 font-medium text-brand-700 transition hover:text-brand-800">
               <Mail className="h-4 w-4" />
               info@esfera.ai
             </a>
           </div>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:justify-self-end">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:justify-self-end">
           <div>
             <p className="text-sm font-semibold text-slate-950">{f.linksTitle}</p>
             <div className="mt-4 grid gap-3 text-sm font-medium text-slate-600">
@@ -68,6 +68,16 @@ function Footer() {
                   </a>
                 ),
               )}
+            </div>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-slate-950">{f.modulesTitle}</p>
+            <div className="mt-4 grid gap-3 text-sm font-medium text-slate-600">
+              {f.moduleLinks.map((link) => (
+                <a key={link.to} href={link.to} className="hover:text-slate-950">
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
           <div>

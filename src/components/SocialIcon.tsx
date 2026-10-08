@@ -2,7 +2,7 @@ function SocialIcon({ icon }: { icon: string }) {
   const iconClassName = "h-4 w-4";
 
   return (
-    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition group-hover:border-[#529B8D]/30 group-hover:bg-[#529B8D]/10 group-hover:text-[#3f8276]" aria-hidden="true">
+    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition group-hover:border-brand-500/30 group-hover:bg-brand-500/10 group-hover:text-brand-700" aria-hidden="true">
       {icon === "instagram" && (
         <svg viewBox="0 0 24 24" className={iconClassName} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect width="18" height="18" x="3" y="3" rx="5" />

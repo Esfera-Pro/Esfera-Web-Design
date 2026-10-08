@@ -1,5 +1,42 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap");
 @import "tailwindcss";
+
+/* Fuentes autohospedadas (subset latin, woff2 variable): sin cadena de
+   terceros ni @import bloqueante. El CSS del sitio las declara y el HTML las
+   precarga (ver Layout.astro). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Verde de marca oscurecido para cumplir contraste AA (4.5:1) en texto y
+     botones con blanco:
+     - brand-500 sobre blanco: 4.6:1 (fondos de botones)
+     - brand-600: hover de brand-500 (6.0:1)
+     - brand-700 sobre blanco: 6.2:1, sobre #F4F6F5: 5.7:1 (texto verde)
+     - brand-800: hover de brand-700 (8.2:1) */
+  --color-brand-500: #477f75;
+  --color-brand-600: #3d6c63;
+  --color-brand-700: #2f6b61;
+  --color-brand-800: #26574f;
+
+  /* Gris por defecto de textos secundarios: el slate-500 original (4.4:1)
+     quedaba justo por debajo de AA sobre el fondo #F4F6F5. */
+  --color-slate-500: #576475;
+}
 
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -19,6 +56,9 @@ body {
   margin: 0;
   min-width: 320px;
   background: #f4f6f5;
+  /* Espacio reservado para el botón flotante de WhatsApp (76-88 px según
+     breakpoint): al llegar al final de la página, el pie queda libre. */
+  padding-bottom: 5.5rem;
 }
 
 button,
@@ -50,6 +90,24 @@ a {
 
 .hero-fade {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Menú móvil: details/summary nativo, sin JS para abrir/cerrar. */
+details[data-mobile-menu] summary::-webkit-details-marker {
+  display: none;
+}
+
+details[data-mobile-menu] summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details[data-mobile-menu][open] .menu-icon-open {
+  display: none;
+}
+
+details[data-mobile-menu]:not([open]) .menu-icon-close {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

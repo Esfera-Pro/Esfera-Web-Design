@@ -9,11 +9,14 @@ control de obra y reportes gerenciales en una sola plataforma web, con un chat d
 los datos del proyecto que responde preguntas en lenguaje natural (avance, presupuesto, compras,
 inventario, proveedores).
 
+Última actualización de este archivo: 2026-10-08.
+
 ## Modelo de negocio
 
 - **Uso autoasistido — USD 0**: cuenta gratuita con 1 empresa, 1 proyecto, presupuestos
   ilimitados, 100 MB de almacenamiento, usuarios secundarios ilimitados y acceso a empresa/proyecto
-  demo. Sin tarjeta. No incluye soporte humano, capacitación, migración de datos ni integraciones.
+  demo. Sin tarjeta. Condición: los proyectos sin actividad durante 60 días se eliminan (con
+  avisos previos por email); el addon Esfera Plus evita la expiración por inactividad.
 - **Addon Esfera Plus — USD 30/mes o USD 300/año**: múltiples empresas y proyectos, 10 GB de
   almacenamiento, proyectos activos mientras el addon esté pagado (sin expiración por inactividad).
 - **Implementación profesional — desde USD 2.500** (servicio B2B, cotizado por alcance):
@@ -34,23 +37,34 @@ inventario, proveedores).
 
 ## Enlaces
 
-- Inicio (español): https://esfera.ai/
-- Funcionalidades: https://esfera.ai/funcionalidades/
-- Precios: https://esfera.ai/precios/
-- Implementación profesional: https://esfera.ai/implementacion/
-- English version: https://esfera.ai/en/
-- Documentación y manuales: https://docs.esfera.ai/
-- Crear cuenta gratis: https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5
-- Iniciar sesión: https://sistema.esfera.ai/Usuario/Login
+- [Inicio (español)](https://esfera.ai/)
+- [Funcionalidades](https://esfera.ai/funcionalidades/)
+- [Precios](https://esfera.ai/precios/)
+- [Implementación profesional](https://esfera.ai/implementacion/)
+- [Módulo de almacén](https://esfera.ai/modulos/almacen/)
+- [Módulo de presupuesto](https://esfera.ai/modulos/presupuesto/)
+- [Módulo de APU (análisis de precios unitarios)](https://esfera.ai/modulos/apu/)
+- [Módulo de compras](https://esfera.ai/modulos/compras/)
+- [Módulo de obra (control de obra)](https://esfera.ai/modulos/obra/)
+- [English version](https://esfera.ai/en/)
+- [Documentación y manuales](https://docs.esfera.ai/)
+- [Crear cuenta gratis](https://sistema.esfera.ai/Usuario/RegistrarPago?IdPlan=5)
+- [Iniciar sesión](https://sistema.esfera.ai/Usuario/Login)
 
 ## Empresa
 
 - Nombre legal: Esfera Solutions LLC
 - Dirección: 2 S Biscayne Blvd, Ste 3200, Miami, FL 33131, United States
 - Email: info@esfera.ai
-- Redes: Instagram, TikTok y X como @esfera.ai · LinkedIn: /company/esferasolutions · YouTube: @esfera-ai
+- Redes: Instagram y TikTok como [@esfera.ai](https://www.instagram.com/esfera.ai/) y
+  [@esfera.ai](https://www.tiktok.com/@esfera.ai) · X como [@esfera_ai](https://x.com/esfera_ai) ·
+  LinkedIn: [/company/esferasolutions](https://linkedin.com/company/esferasolutions) ·
+  YouTube: [@esfera-ai](https://www.youtube.com/@esfera-ai)
 
-## Aviso
+## Legal
 
-Las páginas legales (privacidad y términos) están disponibles en español y son la versión
-vinculante: https://esfera.ai/privacidad/ · https://esfera.ai/terminos/
+Las páginas legales están en español y son la versión vinculante:
+
+- [Política de Privacidad](https://esfera.ai/privacidad/)
+- [Términos y Condiciones](https://esfera.ai/terminos/), con la política de inactividad y
+  eliminación de datos en la sección 15.

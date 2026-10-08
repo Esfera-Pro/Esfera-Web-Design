@@ -5,7 +5,7 @@ import { LegalPageEntry } from "../views/LegalPage";
 import { SITE_URL } from "../data/links";
 
 const c = esContent;
-const meta = c.pages.legal;
+const meta = c.pages.privacidad;
 const alternates = [
   { hreflang: "es", href: `${SITE_URL}/privacidad/` },
   { hreflang: "x-default", href: `${SITE_URL}/privacidad/` },
@@ -13,5 +13,5 @@ const alternates = [
 ---
 
 <Layout htmlLang={c.htmlLang} ogLocale={c.ogLocale} title={meta.title} description={meta.description} canonicalPath="/privacidad/" alternates={alternates}>
-  <LegalPageEntry lang="es" />
+  <LegalPageEntry lang="es" doc="privacidad" />
 </Layout>

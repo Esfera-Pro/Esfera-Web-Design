@@ -12,7 +12,7 @@ import {
 } from "../components/Sections";
 import { I18nProvider, PAGE_PATHS, useI18n, type Lang } from "../i18n";
 import { SITE_URL } from "../data/links";
-import { breadcrumbJsonLd, organizationJsonLd, softwareAppJsonLd } from "../lib/schema";
+import { breadcrumbJsonLd, organizationJsonLd, softwareAppJsonLd, webpageJsonLd } from "../lib/schema";
 
 function FuncionalidadesPage() {
   const { content, lang } = useI18n();
@@ -24,7 +24,8 @@ function FuncionalidadesPage() {
       <JsonLd
         data={[
           organizationJsonLd(),
-          softwareAppJsonLd(content, pageUrl),
+          webpageJsonLd(content, pageUrl, { title: hero.title, description: hero.description }, `${SITE_URL}/#software`),
+          softwareAppJsonLd(content),
           breadcrumbJsonLd([
             { name: lang === "en" ? "Home" : "Inicio", url: SITE_URL + PAGE_PATHS[lang].home! },
             { name: hero.title, url: pageUrl },

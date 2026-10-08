@@ -35,6 +35,7 @@ export const esContent = {
     homeLabel: "esfera.ai inicio",
     mainNavLabel: "Navegación principal",
     logoAlt: "Logo de Esfera AI",
+    menuLabel: "Abrir menú de navegación",
   },
 
   hero: {
@@ -97,6 +98,7 @@ export const esContent = {
     title: "Todo el control de obra en un solo sistema.",
     description:
       "Desde el presupuesto y los APUs hasta compras, almacén, avance físico y administración del proyecto.",
+    moduleLinkLabel: "Ver módulo",
   },
 
   screenshotsSection: {
@@ -144,6 +146,8 @@ export const esContent = {
       },
     ],
     capabilities: ["Consulta datos", "Resume riesgos", "Sugiere acciones"],
+    exampleNote:
+      "Ejemplo ilustrativo con datos de muestra: no corresponde a un proyecto real.",
   },
 
   useCasesSection: {
@@ -199,6 +203,7 @@ export const esContent = {
         "Arma presupuestos por etapas, categorías e ítems. Revisa cantidades, materiales, mano de obra, avance y almacén desde una tabla de control.",
       icon: FileSpreadsheet,
       className: "md:col-span-2",
+      to: "/modulos/presupuesto/",
     },
     {
       title: "Análisis de Precio Unitario",
@@ -207,6 +212,7 @@ export const esContent = {
         "Crea precios unitarios con materiales, mano de obra, equipos y herramientas. Usa más de 400 ítems listos y 2.000 materiales base editables.",
       icon: Ruler,
       className: "",
+      to: "/modulos/apu/",
     },
     {
       title: "Compras",
@@ -215,6 +221,7 @@ export const esContent = {
         "Convierte necesidades de obra en pedidos, compara cotizaciones, aprueba compras y emite órdenes vinculadas al presupuesto aprobado.",
       icon: ReceiptText,
       className: "",
+      to: "/modulos/compras/",
     },
     {
       title: "Gestión de Almacén",
@@ -223,6 +230,7 @@ export const esContent = {
         "Controla entradas, salidas, stock y movimientos de materiales para reducir pérdidas y saber qué hay disponible en cada obra.",
       icon: Warehouse,
       className: "md:col-span-2",
+      to: "/modulos/almacen/",
     },
     {
       title: "Administración de Proyecto",
@@ -231,6 +239,7 @@ export const esContent = {
         "Cruza presupuesto, avance, materiales, mano de obra y herramientas por ítem y etapa para que gerencia vea el estado real del proyecto.",
       icon: GitBranch,
       className: "",
+      to: undefined,
     },
     {
       title: "Módulo de Obras",
@@ -239,6 +248,7 @@ export const esContent = {
         "Registra avances, planillas, retenciones, consumos y observaciones para conectar la oficina técnica con lo que ocurre en campo.",
       icon: HardHat,
       className: "",
+      to: "/modulos/obra/",
     },
   ],
 
@@ -337,6 +347,12 @@ export const esContent = {
       answer:
         "No. El software gratuito abre la puerta. La implementación es un servicio pago para empresas que necesitan diagnóstico, configuración, capacitación, soporte y adopción operativa.",
       topic: "implementacion",
+    },
+    {
+      question: "¿Qué pasa con mis proyectos si dejo de usar la versión gratuita?",
+      answer:
+        "La inactividad se mide por proyecto: si ningún usuario inicia sesión durante 60 días, el proyecto y sus datos se eliminan. Antes recibirás avisos por email a los 30, 45, 57 y 59 días. Con el addon Esfera Plus activo, los proyectos no expiran por inactividad.",
+      topic: "precios",
     },
   ],
 
@@ -494,6 +510,11 @@ export const esContent = {
       ],
       cta: "Crear cuenta gratis",
     },
+    freeCardNote:
+      "Condición del plan gratuito: los proyectos sin actividad durante 60 días se eliminan (con avisos previos por email). El addon Esfera Plus mantiene los proyectos activos.",
+    inactivityLinkLabel: "Ver sección 15 de los Términos",
+    offerPeriodMonth: "(1 mes)",
+    offerPeriodYear: "(1 año)",
     plusCard: {
       name: "Addon Esfera Plus",
       tag: "PLUS",
@@ -591,6 +612,23 @@ export const esContent = {
     backLink: "Volver a esfera.ai",
     company: "ESFERA SOLUTIONS LLC",
     address: "2 S Biscayne Blvd, Ste 3200, Miami, FL 33131, United States",
+    lastUpdated: "Última actualización: octubre de 2026.",
+    indexHeading: "Documentos disponibles",
+    cards: [
+      {
+        title: "Política de Privacidad",
+        description:
+          "Qué datos recogemos, para qué los usamos, con quién los compartimos, cómo los protegemos y qué derechos tienes sobre ellos.",
+        to: "/privacidad/",
+      },
+      {
+        title: "Términos y Condiciones",
+        description:
+          "Reglas de uso de la plataforma, planes y addon Esfera Plus, inactividad y eliminación de datos, responsabilidad y jurisdicción aplicable.",
+        to: "/terminos/",
+      },
+    ],
+    relatedLabel: "Ver también",
   },
 
   footer: {
@@ -609,7 +647,15 @@ export const esContent = {
       { label: "Solicitar implementación", href: IMPLEMENTATION_URL, external: true },
       { label: "Iniciar sesión", href: LOGIN_URL, external: true },
       { label: "Política de privacidad", to: "/privacidad/" },
-      { label: "Términos y condiciones", to: "/terminos/#terminos" },
+      { label: "Términos y condiciones", to: "/terminos/" },
+    ],
+    modulesTitle: "Módulos",
+    moduleLinks: [
+      { label: "Presupuesto", to: "/modulos/presupuesto/" },
+      { label: "Análisis de precios unitarios", to: "/modulos/apu/" },
+      { label: "Compras", to: "/modulos/compras/" },
+      { label: "Almacén", to: "/modulos/almacen/" },
+      { label: "Control de obra", to: "/modulos/obra/" },
     ],
     socialTitle: "Redes sociales",
     copyright: "ESFERA SOLUTIONS LLC.",
@@ -649,6 +695,16 @@ export const esContent = {
       title: "Información legal: privacidad y términos | Esfera AI",
       description:
         "Política de privacidad y términos y condiciones de Esfera Solutions LLC para los servicios de www.esfera.ai.",
+    },
+    privacidad: {
+      title: "Política de Privacidad | Esfera AI",
+      description:
+        "Cómo Esfera Solutions LLC recoge, usa, comparte y protege tus datos personales en www.esfera.ai y sus aplicaciones.",
+    },
+    terminos: {
+      title: "Términos y Condiciones | Esfera AI",
+      description:
+        "Términos de uso de www.esfera.ai y la plataforma Esfera AI: cuentas, planes, addon Esfera Plus, inactividad y jurisdicción.",
     },
     notFound: {
       title: "Página no encontrada | Esfera AI",

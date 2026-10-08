@@ -6,7 +6,7 @@ import { AgenticTag } from "../components/ui";
 import { JsonLd } from "../components/JsonLd";
 import { I18nProvider, PAGE_PATHS, useI18n, type Lang } from "../i18n";
 import { FREE_SIGNUP_URL, IMPLEMENTATION_URL, PLUS_URL, SITE_URL, fadeUp, stagger } from "../data/links";
-import { breadcrumbJsonLd, faqJsonLd, organizationJsonLd, serviceJsonLd, softwareAppJsonLd } from "../lib/schema";
+import { breadcrumbJsonLd, faqJsonLd, organizationJsonLd, serviceJsonLd, softwareAppJsonLd, webpageJsonLd } from "../lib/schema";
 import { cn } from "../lib/utils";
 
 function PricingCard({
@@ -19,6 +19,9 @@ function PricingCard({
   cta,
   href,
   featured,
+  note,
+  noteLabel,
+  noteHref,
 }: {
   name: string;
   tag: string;
@@ -29,13 +32,16 @@ function PricingCard({
   cta: string;
   href: string;
   featured?: boolean;
+  note?: string;
+  noteLabel?: string;
+  noteHref?: string;
 }) {
   return (
     <motion.article
       variants={fadeUp}
       className={cn(
         "relative flex flex-col rounded-[2rem] border bg-white p-6 shadow-sm sm:p-8",
-        featured ? "border-[#529B8D] ring-4 ring-[#529B8D]/10" : "border-slate-200",
+        featured ? "border-brand-500 ring-4 ring-brand-500/10" : "border-slate-200",
       )}
     >
       <AgenticTag>{tag}</AgenticTag>
@@ -48,7 +54,7 @@ function PricingCard({
       <ul className="mt-6 flex-1 space-y-3">
         {includes.map((feature) => (
           <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-slate-700">
-            <Check className="mt-1 h-4 w-4 shrink-0 text-[#529B8D]" />
+            <Check className="mt-1 h-4 w-4 shrink-0 text-brand-500" />
             {feature}
           </li>
         ))}
@@ -59,11 +65,21 @@ function PricingCard({
         rel="noopener noreferrer"
         className={cn(
           "mt-8 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition active:scale-[0.98]",
-          featured ? "bg-[#529B8D] text-white hover:bg-[#477f75]" : "border border-slate-200 bg-white text-slate-900 hover:border-[#529B8D]/40 hover:text-[#3f8276]",
+          featured ? "bg-brand-500 text-white hover:bg-brand-600" : "border border-slate-200 bg-white text-slate-900 hover:border-brand-500/40 hover:text-brand-700",
         )}
       >
         {cta}
       </a>
+      {note && (
+        <p className="mt-4 text-xs leading-5 text-slate-500">
+          {note}{" "}
+          {noteHref && (
+            <a href={noteHref} className="font-semibold text-brand-700 underline-offset-2 transition hover:text-brand-800 hover:underline">
+              {noteLabel}
+            </a>
+          )}
+        </p>
+      )}
     </motion.article>
   );
 }
@@ -79,8 +95,9 @@ function PreciosPage() {
       <JsonLd
         data={[
           organizationJsonLd(),
-          softwareAppJsonLd(content, pageUrl),
-          serviceJsonLd(content, pageUrl),
+          webpageJsonLd(content, pageUrl, { title: p.title, description: p.description }, `${SITE_URL}/#software`),
+          softwareAppJsonLd(content),
+          serviceJsonLd(content),
           faqJsonLd(pricingFaqs),
           breadcrumbJsonLd([
             { name: lang === "en" ? "Home" : "Inicio", url: SITE_URL + PAGE_PATHS[lang].home! },
@@ -126,6 +143,9 @@ function PreciosPage() {
               includes={p.freeCard.includes}
               cta={p.freeCard.cta}
               href={FREE_SIGNUP_URL}
+              note={p.freeCardNote}
+              noteLabel={p.inactivityLinkLabel}
+              noteHref="/terminos/"
             />
             <PricingCard
               name={p.plusCard.name}
@@ -180,7 +200,7 @@ function PreciosPage() {
           <div className="mt-10 text-center">
             <a
               href={PAGE_PATHS[lang].implementation!}
-              className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"
+              className="inline-flex items-center text-sm font-semibold text-brand-700 transition hover:text-brand-800"
             >
               {p.viewImplementation}
               <ArrowRight className="ml-2 h-4 w-4" />

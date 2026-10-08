@@ -37,6 +37,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://esfera.ai/implementacion/"/>
   </url>
   <url>
+    <loc>https://esfera.ai/modulos/almacen/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://esfera.ai/modulos/presupuesto/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://esfera.ai/modulos/apu/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://esfera.ai/modulos/compras/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://esfera.ai/modulos/obra/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://esfera.ai/en/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>

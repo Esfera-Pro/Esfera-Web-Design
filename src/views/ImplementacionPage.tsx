@@ -6,7 +6,7 @@ import { AgenticTag } from "../components/ui";
 import { JsonLd } from "../components/JsonLd";
 import { I18nProvider, PAGE_PATHS, useI18n, type Lang } from "../i18n";
 import { IMPLEMENTATION_URL, SITE_URL, fadeUp, stagger } from "../data/links";
-import { breadcrumbJsonLd, organizationJsonLd, serviceJsonLd } from "../lib/schema";
+import { breadcrumbJsonLd, organizationJsonLd, serviceJsonLd, webpageJsonLd } from "../lib/schema";
 
 const INCLUDE_ICONS = [ClipboardCheck, Settings2, Database, GraduationCap, LifeBuoy, Bot];
 
@@ -20,7 +20,8 @@ function ImplementacionPage() {
       <JsonLd
         data={[
           organizationJsonLd(),
-          serviceJsonLd(content, pageUrl),
+          webpageJsonLd(content, pageUrl, { title: p.title, description: p.description }, `${SITE_URL}/#implementation`),
+          serviceJsonLd(content),
           breadcrumbJsonLd([
             { name: lang === "en" ? "Home" : "Inicio", url: SITE_URL + PAGE_PATHS[lang].home! },
             { name: p.title, url: pageUrl },
@@ -60,8 +61,8 @@ function ImplementacionPage() {
               const Icon = INCLUDE_ICONS[index % INCLUDE_ICONS.length];
               return (
                 <motion.article key={item.title} variants={fadeUp} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#529B8D]/10">
-                    <Icon className="h-5 w-5 text-[#529B8D]" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-500/10">
+                    <Icon className="h-5 w-5 text-brand-500" />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold tracking-tight text-slate-950">{item.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
@@ -80,7 +81,7 @@ function ImplementacionPage() {
               <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
                 {p.processTitle}
               </h2>
-              <div className="mt-7 rounded-[1.75rem] border border-[#529B8D]/20 bg-[#529B8D]/10 p-6">
+              <div className="mt-7 rounded-[1.75rem] border border-brand-500/20 bg-brand-500/10 p-6">
                 <p className="text-3xl font-semibold tracking-[-0.04em] text-slate-950">{p.pricingTitle}</p>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{p.pricingText}</p>
                 <div className="mt-6 flex flex-col gap-3">
@@ -88,13 +89,13 @@ function ImplementacionPage() {
                     href={IMPLEMENTATION_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-full bg-[#529B8D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98]"
+                    className="inline-flex items-center justify-center rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 active:scale-[0.98]"
                   >
                     {p.cta}
                   </a>
                   <a
                     href={PAGE_PATHS[lang].pricing!}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-[#529B8D]/40 hover:text-[#3f8276] active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-brand-500/40 hover:text-brand-700 active:scale-[0.98]"
                   >
                     {p.viewPricing}
                     <ArrowRight className="h-4 w-4" />

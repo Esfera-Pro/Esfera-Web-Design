@@ -30,19 +30,38 @@ function DefinitionSection() {
               </h2>
               <p className="mt-5 text-lg leading-8 text-slate-600">{def.subtitle}</p>
               <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-950 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.6)]">
-                <iframe
-                  className="aspect-video w-full"
-                  src="https://www.youtube.com/embed/9GXhBwILYHY?start=5"
-                  title={def.videoTitle}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
+                {/* Facade del video: el reproductor de YouTube solo se carga al
+                    hacer clic; sin JS, el enlace lleva al video en YouTube. */}
+                <a
+                  href="https://www.youtube.com/watch?v=9GXhBwILYHY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-video-facade="9GXhBwILYHY"
+                  data-video-title={def.videoTitle}
+                  aria-label={def.videoTitle}
+                  className="group relative block aspect-video w-full"
+                >
+                  <img
+                    src="/video-explicativo.webp"
+                    alt=""
+                    width={1280}
+                    height={720}
+                    loading="lazy"
+                    className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:opacity-100"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-500 text-white shadow-lg transition group-hover:scale-105 sm:h-16 sm:w-16">
+                      <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6" fill="currentColor" aria-hidden="true">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </span>
+                </a>
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-500">{def.videoSummary}</p>
               <a
                 href={PAGE_PATHS[content.lang].features!}
-                className="mt-6 inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"
+                className="mt-6 inline-flex items-center text-sm font-semibold text-brand-700 transition hover:text-brand-800"
               >
                 {def.exploreLabel}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -50,13 +69,13 @@ function DefinitionSection() {
             </motion.div>
             <motion.div variants={fadeUp} className="grid gap-4 md:grid-cols-2">
               {def.paths.map((path) => (
-                <article key={path.title} className={cn("rounded-[1.75rem] border p-6 shadow-sm", path.featured ? "border-[#529B8D]/35 bg-[#529B8D]/10" : "border-slate-200 bg-slate-50")}>
+                <article key={path.title} className={cn("rounded-[1.75rem] border p-6 shadow-sm", path.featured ? "border-brand-500/35 bg-brand-500/10" : "border-slate-200 bg-slate-50")}>
                   <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{path.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-600">{path.description}</p>
                   <div className="mt-6 space-y-3">
                     {path.features.map((feature) => (
                       <div key={feature} className="flex gap-3 text-sm font-medium leading-6 text-slate-700">
-                        <Check className="mt-1 h-4 w-4 shrink-0 text-[#529B8D]" />
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-brand-500" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -66,7 +85,6 @@ function DefinitionSection() {
             </motion.div>
           </div>
         </motion.article>
-        <TrialCta />
       </div>
     </section>
   );
@@ -84,20 +102,28 @@ function ModulesSection() {
           {content.modules.map((module) => {
             const Icon = module.icon;
             return (
-              <motion.article key={module.title} variants={fadeUp} className={cn("group rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#529B8D]/30 hover:shadow-[0_18px_50px_-35px_rgba(15,23,42,0.4)]", module.className)}>
+              <motion.article key={module.title} variants={fadeUp} className={cn("group rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-[0_18px_50px_-35px_rgba(15,23,42,0.4)]", module.className)}>
                 <div className="flex items-center justify-between gap-4">
                   <AgenticTag>{module.tag}</AgenticTag>
-                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-3 transition group-hover:bg-[#529B8D]/10">
-                    <Icon className="h-5 w-5 text-[#529B8D]" />
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-3 transition group-hover:bg-brand-500/10">
+                    <Icon className="h-5 w-5 text-brand-500" />
                   </div>
                 </div>
                 <h3 className="mt-8 text-xl font-semibold tracking-tight text-slate-950">{module.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{module.description}</p>
+                {module.to && (
+                  <a
+                    href={module.to}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition hover:text-brand-800"
+                  >
+                    {s.moduleLinkLabel}
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                )}
               </motion.article>
             );
           })}
         </motion.div>
-        <TrialCta />
       </div>
     </section>
   );
@@ -135,7 +161,7 @@ function ProductScreenshotsSection() {
                 data-lightbox-alt={screenshot.alt}
                 data-lightbox-tag={screenshot.tag}
                 data-lightbox-title={screenshot.title}
-                className="relative overflow-hidden rounded-[1.35rem] border border-slate-200 bg-slate-100 text-left transition focus:outline-none focus:ring-4 focus:ring-[#529B8D]/20"
+                className="relative overflow-hidden rounded-[1.35rem] border border-slate-200 bg-slate-100 text-left transition focus:outline-none focus:ring-4 focus:ring-brand-500/20"
                 aria-label={`${s.zoomAriaPrefix} ${screenshot.title}`}
               >
                 <img
@@ -157,7 +183,6 @@ function ProductScreenshotsSection() {
             </motion.article>
           ))}
         </motion.div>
-        <TrialCta />
       </div>
       <dialog
         data-screenshots-dialog
@@ -166,7 +191,7 @@ function ProductScreenshotsSection() {
       >
         <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3 sm:px-5">
           <div>
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3f8276]" data-dialog-tag />
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-700" data-dialog-tag />
             <h3 className="mt-1 text-base font-semibold tracking-tight text-slate-950 sm:text-lg" data-dialog-title />
           </div>
           <button
@@ -208,7 +233,7 @@ function PlatformSection() {
             const Icon = capability.icon;
             return (
               <motion.article key={capability.title} variants={fadeUp} className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm">
-                <Icon className="h-5 w-5 text-[#529B8D]" />
+                <Icon className="h-5 w-5 text-brand-500" />
                 <AgenticTag className="mt-6">{capability.tag}</AgenticTag>
                 <h3 className="mt-5 text-lg font-semibold tracking-tight text-slate-950">{capability.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{capability.description}</p>
@@ -238,7 +263,7 @@ function WorkflowSection() {
             <p className="mt-5 text-base leading-7 text-slate-600">
               {s.description}
             </p>
-            <a href="https://docs.esfera.ai/flujo-trabajo" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center text-sm font-semibold text-[#3f8276]">
+            <a href="https://docs.esfera.ai/flujo-trabajo" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center text-sm font-semibold text-brand-700">
               {s.manualLink}
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
@@ -252,7 +277,6 @@ function WorkflowSection() {
             ))}
           </motion.div>
         </div>
-        <TrialCta className="bg-white" />
       </div>
     </section>
   );
@@ -291,12 +315,12 @@ function AiSection() {
                 <Bot className="h-5 w-5 text-[#9dd5ca]" />
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">{s.chatHeader}</span>
               </div>
-              <span className="rounded-full bg-[#529B8D]/15 px-3 py-1 font-mono text-xs text-[#9dd5ca]">{s.chatBadge}</span>
+              <span className="rounded-full bg-brand-500/15 px-3 py-1 font-mono text-xs text-[#9dd5ca]">{s.chatBadge}</span>
             </div>
             <div className="mt-4 grid gap-3">
               {s.conversations.map((conversation) => (
                 <div key={conversation.q} className="grid gap-3">
-                  <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-[#529B8D] p-3 text-xs leading-5 text-white shadow-sm sm:text-sm">
+                  <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-brand-500 p-3 text-xs leading-5 text-white shadow-sm sm:text-sm">
                     {conversation.q}
                   </div>
                   <div className="max-w-[92%] rounded-2xl rounded-tl-md bg-white/[0.08] p-3 text-xs leading-5 text-white/80 sm:text-sm">
@@ -320,6 +344,7 @@ function AiSection() {
                 );
               })}
             </div>
+            <p className="mt-4 text-xs leading-5 text-white/50">{s.exampleNote}</p>
           </motion.div>
         </div>
       </div>
@@ -340,8 +365,8 @@ function UseCasesSection() {
             const Icon = useCase.icon;
             return (
               <motion.article key={useCase.title} variants={fadeUp} className={cn("rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm", index === 0 && "lg:min-h-80")}>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#529B8D]/10">
-                  <Icon className="h-6 w-6 text-[#529B8D]" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10">
+                  <Icon className="h-6 w-6 text-brand-500" />
                 </div>
                 <h3 className="mt-8 text-2xl font-semibold tracking-tight text-slate-950">{useCase.title}</h3>
                 <p className="mt-4 text-sm leading-6 text-slate-600">{useCase.description}</p>
@@ -363,20 +388,20 @@ function BusinessModelSection() {
     <section id="modelo" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeader tag={s.tag} title={s.title} description={s.description} />
-        <motion.div className="mt-10 rounded-[1.75rem] border border-[#529B8D]/20 bg-[#529B8D]/10 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }}>
+        <motion.div className="mt-10 rounded-[1.75rem] border border-brand-500/20 bg-brand-500/10 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }}>
           <div>
             <AgenticTag>{s.keyMessageTag}</AgenticTag>
             <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">{s.keyMessageTitle}</h3>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{s.keyMessageText}</p>
           </div>
-          <a href={IMPLEMENTATION_URL} className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[#529B8D] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#477f75] active:scale-[0.98] sm:mt-0">
+          <a href={IMPLEMENTATION_URL} className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 active:scale-[0.98] sm:mt-0">
             {s.keyMessageCta}
           </a>
         </motion.div>
         <motion.div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           {content.plans.map((path) => (
-            <motion.article key={path.name} variants={fadeUp} className={cn("relative flex flex-col rounded-[2rem] border bg-white p-6 shadow-sm sm:p-8", path.featured ? "border-[#529B8D] ring-4 ring-[#529B8D]/10" : "border-slate-200")}>
-              {path.featured && <span className="absolute right-5 top-5 rounded-full bg-[#529B8D] px-3 py-1 text-xs font-semibold text-white">{s.focusBadge}</span>}
+            <motion.article key={path.name} variants={fadeUp} className={cn("relative flex flex-col rounded-[2rem] border bg-white p-6 shadow-sm sm:p-8", path.featured ? "border-brand-500 ring-4 ring-brand-500/10" : "border-slate-200")}>
+              {path.featured && <span className="absolute right-5 top-5 rounded-full bg-brand-500 px-3 py-1 text-xs font-semibold text-white">{s.focusBadge}</span>}
               <AgenticTag>{path.tag}</AgenticTag>
               <h3 className="mt-5 text-2xl font-semibold tracking-tight text-slate-950">{path.name}</h3>
               <p className="mt-4 text-sm leading-6 text-slate-600">{path.description}</p>
@@ -386,7 +411,7 @@ function BusinessModelSection() {
               </div>
               <a
                 href={path.kind === "free" ? FREE_SIGNUP_URL : path.kind === "plus" ? PLUS_URL : IMPLEMENTATION_URL}
-                className={cn("mt-7 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition active:scale-[0.98]", path.featured ? "bg-[#529B8D] text-white hover:bg-[#477f75]" : "border border-slate-200 bg-white text-slate-900 hover:border-[#529B8D]/40 hover:text-[#3f8276]")}
+                className={cn("mt-7 inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition active:scale-[0.98]", path.featured ? "bg-brand-500 text-white hover:bg-brand-600" : "border border-slate-200 bg-white text-slate-900 hover:border-brand-500/40 hover:text-brand-700")}
               >
                 {path.cta}
               </a>
@@ -396,7 +421,7 @@ function BusinessModelSection() {
                   <div className="mt-4 space-y-3">
                     {path.includes.map((feature) => (
                       <div key={feature} className="flex items-start gap-3 text-sm leading-6 text-slate-700">
-                        <Check className="mt-1 h-4 w-4 shrink-0 text-[#529B8D]" />
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-brand-500" />
                         {feature}
                       </div>
                     ))}
@@ -422,7 +447,7 @@ function BusinessModelSection() {
         <div className="mt-10 text-center">
           <a
             href={PAGE_PATHS[content.lang].pricing!}
-            className="inline-flex items-center text-sm font-semibold text-[#3f8276] transition hover:text-[#2f6b61]"
+            className="inline-flex items-center text-sm font-semibold text-brand-700 transition hover:text-brand-800"
           >
             {s.viewPricingLink}
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -449,7 +474,6 @@ function FaqSection() {
             </motion.article>
           ))}
         </motion.div>
-        <TrialCta />
       </div>
     </section>
   );
